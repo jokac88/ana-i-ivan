@@ -1,11 +1,11 @@
 <template>
-  <Header/>
+<!--  <Header/>-->
 
   <div class="main">
     <slot/>
   </div>
 
-  <Footer/>
+<!--  <Footer/>-->
 </template>
 
 <script>

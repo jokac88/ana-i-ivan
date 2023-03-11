@@ -1,12 +1,29 @@
+@font-face {
+  font-family: 'LovelyGrace';
+  src: url('../fonts/LovelyGraceBG.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Playfair';
+  src: url('../fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PlayfairItalic';
+  src: url('../fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
 html {
   height: 100%;
 }
 
 body {
+  font-family: $font-family-main;
   display: flex;
   height: 100%;
   margin: 0;
 }
+
 
 #__nuxt {
   flex: 1;
@@ -22,11 +39,11 @@ footer {
   justify-content: center;
   text-transform: uppercase;
   font-weight: bold;
-  background-color: grey;
+  background-color: white;
 }
 
 .main {
-  background: url('~/assets/img/background.png');
+  background: url('../../assets/img/background.png');
   flex: 30;
   overflow-y: auto;
 }
@@ -39,16 +56,44 @@ footer {
   gap: 20px;
 }
 
-h1 {
-  margin: 0;
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
-@font-face {
-  font-family: 'LovelyGrace';
-  src: url('~/assets/fonts/LovelyGraceBG.otf') format('opentype');
+.headline {
+  font-size: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $dark-green;
 }
 
-h1 {
-  font-family: 'LovelyGrace', sans-serif;
-  font-size: 72px;
+.text {
+  font-family: $font-family-secondary-italic;
+  color: #d48050;
+  font-size: 25px;
+  padding: 30px;
+}
+
+.date {
+  font-size: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $dark-green;
+  padding: 30px;
+}
+
+.timeline {
+  display: flex;
+}
+
+.col {
+  color: #d48050;
+  font-size: 18px;
+  padding: 0 150px;
 }
