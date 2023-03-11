@@ -1,13 +1,16 @@
 {
   "private": true,
   "scripts": {
+    "dev": "nuxt dev --port=8000",
     "build": "nuxt build",
-    "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "deploy": "gh-pages -d dist",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.2.3"
+    "gh-pages": "^5.0.0",
+    "nuxt": "^3.2.3",
+    "sass": "^1.59.0"
   }
 }

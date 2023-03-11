@@ -1,0 +1,54 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  height: 100%;
+  margin: 0;
+}
+
+#__nuxt {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: grey;
+}
+
+.main {
+  background: url('~/assets/img/background.png');
+  flex: 30;
+  overflow-y: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'LovelyGrace';
+  src: url('~/assets/fonts/LovelyGraceBG.otf') format('opentype');
+}
+
+h1 {
+  font-family: 'LovelyGrace', sans-serif;
+  font-size: 72px;
+}
