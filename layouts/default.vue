@@ -1,7 +1,7 @@
 <template>
 <!--  <Header/>-->
 
-  <div class="main">
+  <div class="container">
     <slot/>
   </div>
 

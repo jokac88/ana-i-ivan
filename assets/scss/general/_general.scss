@@ -18,82 +18,47 @@ html {
 }
 
 body {
-  font-family: $font-family-main;
-  display: flex;
   height: 100%;
   margin: 0;
+  display: flex;
+  font-family: $font-family-main;
 }
-
 
 #__nuxt {
-  flex: 1;
   display: flex;
-  flex-direction: column;
+  flex: 1;
 }
 
-header,
 footer {
+  display: flex;
   flex: 1;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  background-color: white;
-}
-
-.main {
-  background: url('../../assets/img/background.png');
-  flex: 30;
-  overflow-y: auto;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 20px;
-  gap: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .container {
-  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.flex-container {
+  display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
-.headline {
-  font-size: 100px;
+//.wrapper {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  padding: 20px;
+//  gap: 20px;
+//}
+
+.timelines {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $dark-green;
-}
-
-.text {
-  font-family: $font-family-secondary-italic;
-  color: #d48050;
-  font-size: 25px;
-  padding: 30px;
-}
-
-.date {
-  font-size: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $dark-green;
-  padding: 30px;
-}
-
-.timeline {
-  display: flex;
-}
-
-.col {
-  color: #d48050;
-  font-size: 18px;
-  padding: 0 150px;
+  flex: 1;
 }

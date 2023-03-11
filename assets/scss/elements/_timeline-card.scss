@@ -1,0 +1,33 @@
+.timeline-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  font-family: $font-family-secondary;
+  color: $color-tan;
+
+  p {
+    margin: 0;
+
+    + p {
+      margin-top: 15px;
+    }
+  }
+
+  &__time {
+    font-size: 28px;
+  }
+
+  &__description {
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+
+  &__location {
+    text-align: center;
+  }
+
+  i {
+    font-size: 120px;
+  }
+}

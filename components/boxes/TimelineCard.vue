@@ -1,9 +1,9 @@
 <template>
-  <div class="col">
-    <p>{{ timeline.time }}</p>
-    <p>{{ timeline.description }}</p>
-    <i :class="`icon-${timeline.icon}`"></i>
-    <p>{{ timeline.location }}</p>
+  <div class="timeline-card">
+    <p class="timeline-card__time">{{ timeline.time }}</p>
+    <p class="timeline-card__description">{{ timeline.description }}</p>
+    <i :class="`icon-${timeline.icon}`"/>
+    <p v-html="timeline.location" class="timeline-card__location"></p>
   </div>
 </template>
 
@@ -19,7 +19,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>
