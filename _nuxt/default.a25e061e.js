@@ -1,1 +1,0 @@
-import{a as t,o as s,b as a,i as o}from"./entry.4b151c93.js";const n={name:"default"},r={class:"main"};function c(e,d,l,_,f,i){return s(),a("div",r,[o(e.$slots,"default")])}const u=t(n,[["render",c]]);export{u as default};
