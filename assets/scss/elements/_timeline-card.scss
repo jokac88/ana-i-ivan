@@ -8,14 +8,11 @@
 
   p {
     margin: 0;
-
-    + p {
-      margin-top: 15px;
-    }
   }
 
   &__time {
-    font-size: 28px;
+    font-family: $font-family-main;
+    font-size: 42px;
   }
 
   &__description {
@@ -29,5 +26,11 @@
 
   i {
     font-size: 120px;
+    margin: 20px 0;
+  }
+
+  &__button {
+    color: $color-tan;
+    margin-top: 20px;
   }
 }

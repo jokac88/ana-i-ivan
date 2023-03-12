@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TimelineCard from "~/components/boxes/TimelineCard";
+import TimelineCard from "~/components/elements/TimelineCard.vue";
 
 export default {
   name: "Timelines",

@@ -6,28 +6,32 @@
   },
   "timelines": [
     {
-      "time": "13:00ч",
-      "description": "Скуп званица",
-      "icon": "oltar",
-      "location": "Булевар Зорана Ђинђића 166"
-    },
-    {
-      "time": "18:00ч",
+      "time": "15:00ч",
       "description": "Црквено венчање",
       "icon": "crkva",
-      "location": "<strong>Храм Св. Великомученика Димитрија</strong>,<br/>Омладинских бригада 3а, Београд"
+      "location": "<strong>Храм Светог Димитрија</strong>,<br/>Омладинских бригада 3а, Београд",
+      "locationUrl": "https://goo.gl/maps/AnECGrEJYzjvpUUE6"
     },
     {
-      "time": "18:00ч",
-      "description": "Скуп званица",
+      "time": "16:30ч",
+      "description": "Долазак у ресторан",
+      "icon": "oltar",
+      "location": "<strong>Ресторан Ђурђевдан</strong>,<br/>Зрењаниски пут 106Б, Београд",
+      "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
+    },
+    {
+      "time": "17:30ч",
+      "description": "Bенчање",
       "icon": "burme",
-      "location": "Булевар Зорана Ђинђића 166"
+      "location": "<strong>Ресторан Ђурђевдан</strong>,<br/>Зрењаниски пут 106Б, Београд",
+      "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
     },
     {
       "time": "18:00ч",
-      "description": "Скуп званица",
+      "description": "Почетак прославе",
       "icon": "vatromet-ljubavi",
-      "location": "Булевар Зорана Ђинђића 166"
+      "location": "<strong>Ресторан Ђурђевдан</strong>,<br/>Зрењаниски пут 106Б, Београд",
+      "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
     }
   ]
 }
