@@ -31,7 +31,7 @@ export default defineNuxtConfig({
                 {
                     rel: "stylesheet",
                     href:
-                        "https://fonts.googleapis.com/css2?family=Bad+Script&display=swap"
+                        "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap"
                 }
             ],
             noscript: [

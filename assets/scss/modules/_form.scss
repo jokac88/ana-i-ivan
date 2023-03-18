@@ -62,8 +62,8 @@
   &__text {
     margin-top: 0;
     margin-bottom: 10px;
-    font-weight: bold;
-    font-family: $font-family-secondary;
+    font-weight: 500;
+    font-family: $font-family-roboto-slab;
   }
 
   &__required {
@@ -128,7 +128,7 @@
 
   &__description {
     margin: 0;
-    font-family: $font-family-secondary;
+    font-family: $font-family-roboto-slab;
     font-size: 14px;
     color: $color-description;
   }
@@ -162,7 +162,8 @@
   }
 
   &__info {
-    font-family: $font-family-bad-script;
+    font-family: $font-family-roboto-slab;
+    margin-bottom: 0;
   }
 
   #my-response-iframe {
