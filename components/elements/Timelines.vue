@@ -11,11 +11,11 @@ const props = defineProps({
 
 <template>
 
-  <div class="timelines">
+  <section class="timelines">
 
     <div class="timelines__wrapper">
 
       <TimelineCard v-for="timeline in timelinesData" :timeline="timeline"/>
     </div>
-  </div>
+  </section>
 </template>

@@ -1,11 +1,14 @@
 .timeline-card {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   font-family: $font-family-secondary;
   text-align: center;
   color: $color-tan;
+
+  @include target-mq(xxl) {
+    flex: 1;
+  }
 
   &__time {
     font-family: $font-family-main;

@@ -7,22 +7,27 @@ const props = defineProps({
   formEntry: {
     type: String,
     default: ''
+  },
+  checked: {
+    type: String,
+    default: ''
   }
 })
 </script>
 
 <template>
 
-  <label class="form__radio-button">
+  <label class="radio-button">
     {{ value }}
 
     <input
         type="radio"
         :name="formEntry"
+        @click="$emit('radio-button-clicked', value)"
         :value="value"
-        :checked="value === 'ДА'"
+        :checked="value === checked"
     />
 
-    <span class="radio-button"/>
+    <span class="checkmark"/>
   </label>
 </template>

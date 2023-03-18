@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
 
-  <div class="timeline-card">
+  <section class="timeline-card">
 
     <p class="timeline-card__time">{{ timeline.time }}</p>
 
@@ -21,5 +21,5 @@ const props = defineProps({
     <p v-html="timeline.location" class="timeline-card__location"></p>
 
     <a :href="timeline.locationUrl" target="_blank" class="timeline-card__button">Види на мапи</a>
-  </div>
+  </section>
 </template>

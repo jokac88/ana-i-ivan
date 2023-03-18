@@ -9,22 +9,50 @@ const props = defineProps({
   },
 });
 
+const googleFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
+const name = ref('');
+const coming = ref('');
+const guestsNumber = ref(1);
+const guestsNames = ref('');
+const message = ref('');
 const isLoading = ref(false);
 const isSuccessful = ref(false);
-const guestsNumber = ref(1);
-const googleFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
+
+function radioButtonClicked(value) {
+  coming.value = value;
+
+  if (coming.value === 'НЕ') {
+    guestsNumber.value = 1;
+    guestsNames.value = '';
+    message.value = '';
+  }
+}
+
+function optionSelected(event) {
+  if (event.target.value === '1') {
+    guestsNames.value = '';
+  }
+}
+
+function resetForm() {
+  name.value = guestsNames.value = message.value = '';
+  coming.value = '';
+  guestsNumber.value = 1;
+  isLoading.value = isSuccessful.value = false;
+}
 
 function submit() {
   document.getElementById('my-form').target = 'my-response-iframe';
   const iframe = document.getElementById('my-response-iframe');
 
   isLoading.value = true;
-  isSuccessful.value = false;
 
   if (iframe) {
     iframe.onload = () => {
-      isLoading.value = false;
       isSuccessful.value = true;
+      isLoading.value = false;
+
+      resetForm();
     }
   }
 }
@@ -33,110 +61,126 @@ function submit() {
 
 <template>
 
-  <form
-      id="my-form"
-      target="my-response-iframe"
-      :action="googleFormEndpoint"
-      method="POST"
-      :onsubmit="submit"
-      class="form"
-  >
+  <section class="form">
 
     <div class="form__wrapper">
 
-      <p class="form__heading">{{ formData.heading }}</p>
+      <form
+          id="my-form"
+          target="my-response-iframe"
+          :action="googleFormEndpoint"
+          method="POST"
+          :onsubmit="submit"
+      >
 
-      <div class="form__element">
+        <p class="form__heading">{{ formData.heading }}</p>
 
-        <p class="form__text">
+        <div class="form__element">
 
-          {{ formData.name.question }}
+          <p class="form__text">
 
-          <span class="form__required">*</span>
-        </p>
+            {{ formData.name.question }}
 
-        <input
-            type="text"
-            :name="formData.name.formEntry"
-            oninvalid="this.setCustomValidity('Ово поље је обавезно')"
-            oninput="this.setCustomValidity('')"
-            class="form__input"
-            required
-        />
-      </div>
+            <span class="form__required">*</span>
+          </p>
 
-      <div class="form__element form__radio-buttons">
+          <input
+              type="text"
+              :name="formData.name.formEntry"
+              v-model="name"
+              oninvalid="this.setCustomValidity('Упишите Ваше име и презиме')"
+              oninput="this.setCustomValidity('')"
+              class="form__input"
+              required
+          />
+        </div>
 
-        <p class="form__text">
+        <div class="form__element form__radio-buttons">
 
-          {{ formData.coming.question }}
+          <p class="form__text">
 
-          <span class="form__required">*</span>
-        </p>
+            {{ formData.coming.question }}
 
-        <RadioButton
-            v-for="value in formData.coming.values"
-            :value="value"
-            :form-entry="formData.coming.formEntry"
-        />
-      </div>
+            <span class="form__required">*</span>
+          </p>
 
-      <div class="form__element form__select">
+          <RadioButton
+              v-for="value in formData.coming.values"
+              :value="value"
+              :checked="coming"
+              :form-entry="formData.coming.formEntry"
+              @radio-button-clicked="radioButtonClicked"
+          />
+        </div>
 
-        <p class="form__text">{{ formData.guestsNumber.question }}</p>
+        <div class="form__element form__select">
 
-        <select
-            :name="formData.guestsNumber.formEntry"
-            v-model=guestsNumber
-            class="form__input"
-        >
+          <p class="form__text">{{ formData.guestsNumber.question }}</p>
 
-          <option v-for="(option, index) in formData.guestsNumber.options" :value="option + 1">
+          <select
+              :name="formData.guestsNumber.formEntry"
+              v-model="guestsNumber"
+              class="form__input"
+              @change="optionSelected"
+              :disabled="coming === '' || coming === 'НЕ'"
+          >
 
-            <template v-if="!index">Само ја</template>
+            <option v-for="(option, index) in formData.guestsNumber.options" :value="option + 1">
 
-            <template v-else>+{{ option }}</template>
-          </option>
-        </select>
+              <template v-if="!index">Само ја</template>
 
-        <p class="form__description">{{ formData.guestsNumber.description }}</p>
-      </div>
+              <template v-else>+{{ option }}</template>
+            </option>
+          </select>
 
-      <div class="form__element">
+          <p class="form__description">{{ formData.guestsNumber.description }}</p>
+        </div>
 
-        <p class="form__text">{{ formData.guestsNames.question }}</p>
+        <div class="form__element">
 
-        <textarea
-            :name="formData.guestsNames.formEntry"
-            :placeholder="formData.guestsNames.placeholder"
-            rows="4"
-            class="form__input form__text-area"
-            oninvalid="this.setCustomValidity(`Ко још долази са вама?`)"
-            oninput="this.setCustomValidity('')"
-            :required="guestsNumber > 1"
-            :disabled="guestsNumber === 1"
-        />
-      </div>
+          <p class="form__text">
+            {{ formData.guestsNames.question }}
 
-      <div class="form__element">
+            <span v-if="guestsNumber > 1" class="form__required">*</span>
+          </p>
 
-        <p class="form__text">{{ formData.message.question }}</p>
+          <textarea
+              :name="formData.guestsNames.formEntry"
+              v-model="guestsNames"
+              :placeholder="formData.guestsNames.placeholder"
+              rows="4"
+              class="form__input form__text-area"
+              oninvalid="this.setCustomValidity(`Ко још долази са Вама?`)"
+              oninput="this.setCustomValidity('')"
+              :required="guestsNumber > 1"
+              :disabled="guestsNumber === 1"
+          />
+        </div>
 
-        <textarea
-            :name="formData.message.formEntry"
-            :placeholder="formData.message.placeholder"
-            rows="4"
-            class="form__input form__text-area"
-        />
-      </div>
+        <div class="form__element">
 
-      <button class="form__submit-button">{{ formData.submitButton }}</button>
+          <p class="form__text">{{ formData.message.question }}</p>
 
-      <p v-if="isLoading">Loading</p>
+          <textarea
+              :name="formData.message.formEntry"
+              v-model="message"
+              :placeholder="formData.message.placeholder"
+              rows="4"
+              class="form__input form__text-area"
+              :disabled="coming === '' || coming === 'НЕ'"
+          />
+        </div>
 
-      <p v-if="isSuccessful">Успешно сте послали одговор</p>
+        <button class="form__submit-button">{{ formData.submitButton }}</button>
 
-      <iframe id="my-response-iframe" name="my-response-iframe"/>
+        <p v-if="isLoading">Loading</p>
+
+        <p v-if="isSuccessful">Успешно сте послали одговор</p>
+
+        <iframe id="my-response-iframe" name="my-response-iframe"/>
+      </form>
+
+      <h2 class="form__info">{{ formData.info }}</h2>
     </div>
-  </form>
+  </section>
 </template>

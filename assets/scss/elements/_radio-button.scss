@@ -1,0 +1,67 @@
+.radio-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 35px;
+  height: 25px;
+  font-family: $font-family-secondary;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+
+  + .radio-button {
+    margin-top: 10px;
+  }
+
+  &:hover {
+
+    input {
+
+      & ~ .checkmark {
+        background-color: $color-dark-green;
+      }
+    }
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-light-gray;
+    border-radius: 50%;
+    transition: .3s background-color;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $color-white;
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked {
+
+      & ~ .checkmark {
+        background-color: $color-dark-green;
+
+        &:after {
+          display: block;
+        }
+      }
+    }
+  }
+}

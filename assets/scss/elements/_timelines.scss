@@ -1,13 +1,13 @@
 .timelines {
-  background: url('assets/img/main-mobile-background.jpg') 0 0 no-repeat;
+  background: url('assets/img/timelines-mobile-background.jpg') 0 0 no-repeat;
   background-size: cover;
 
   @include target-mq(sm) {
-    background: url('assets/img/main-background.jpg') 0 0 no-repeat;
+    background: url('assets/img/timelines-background.jpg') 0 0 no-repeat;
     background-size: cover;
   }
 
-  @include target-mq(md) {
+  @include target-mq(xxl) {
     display: flex;
     justify-content: center;
   }
@@ -28,14 +28,16 @@
     }
 
     @include target-mq(mlg) {
-      flex: 0 1200px;
+      justify-content: center;
       align-items: center;
       column-gap: 30px;
+      padding: 30px;
       min-height: 560px;
-      padding: 0;
     }
 
     @include target-mq(xxl) {
+      flex: 0 1200px;
+      padding: 0;
     }
   }
 }
