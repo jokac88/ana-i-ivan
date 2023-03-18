@@ -11,7 +11,7 @@ const props = defineProps({
 
 const googleFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
 const name = ref('');
-const coming = ref('');
+const coming = ref('ДА');
 const guestsNumber = ref(1);
 const guestsNames = ref('');
 const message = ref('');
@@ -36,7 +36,7 @@ function optionSelected(event) {
 
 function resetForm() {
   name.value = guestsNames.value = message.value = '';
-  coming.value = '';
+  coming.value = 'ДА';
   guestsNumber.value = 1;
   isLoading.value = isSuccessful.value = false;
 }
@@ -49,10 +49,8 @@ function submit() {
 
   if (iframe) {
     iframe.onload = () => {
-      isSuccessful.value = true;
       isLoading.value = false;
-
-      resetForm();
+      isSuccessful.value = true;
     }
   }
 }
@@ -173,14 +171,20 @@ function submit() {
 
         <button class="form__submit-button">{{ formData.submitButton }}</button>
 
-        <p v-if="isLoading">Loading</p>
+        <p v-if="isLoading" class="form__loading">Loading</p>
 
-        <p v-if="isSuccessful">Успешно сте послали одговор</p>
+        <p
+            v-if="isSuccessful"
+            @click="resetForm"
+            class="form__successful-message"
+        >
+          Успешно сте послали одговор
+        </p>
 
         <iframe id="my-response-iframe" name="my-response-iframe"/>
       </form>
 
-      <h2 class="form__info">{{ formData.info }}</h2>
+      <h4 class="form__info">{{ formData.info }}</h4>
     </div>
   </section>
 </template>
