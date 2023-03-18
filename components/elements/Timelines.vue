@@ -1,22 +1,21 @@
-<template>
-  <div class="timelines">
-    <TimelineCard v-for="timeline in timelines" :timeline="timeline"/>
-  </div>
-</template>
-
-<script>
+<script setup>
 import TimelineCard from "~/components/elements/TimelineCard.vue";
 
-export default {
-  name: "Timelines",
-  components: {
-    TimelineCard,
+const props = defineProps({
+  timelinesData: {
+    type: Array,
+    default: () => [],
   },
-  props: {
-    timelines: {
-      type: Array,
-      default: () => [],
-    },
-  },
-}
+})
 </script>
+
+<template>
+
+  <div class="timelines">
+
+    <div class="timelines__wrapper">
+
+      <TimelineCard v-for="timeline in timelinesData" :timeline="timeline"/>
+    </div>
+  </div>
+</template>

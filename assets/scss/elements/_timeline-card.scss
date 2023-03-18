@@ -4,33 +4,104 @@
   flex-direction: column;
   align-items: center;
   font-family: $font-family-secondary;
+  text-align: center;
   color: $color-tan;
-
-  p {
-    margin: 0;
-  }
 
   &__time {
     font-family: $font-family-main;
-    font-size: 42px;
+    font-size: 38px;
+    line-height: 1;
+
+    @include target-mq(xxl) {
+      font-size: 42px;
+    }
   }
 
-  &__description {
+  &__event {
     font-size: 22px;
     text-transform: uppercase;
-  }
 
-  &__location {
-    text-align: center;
+    @include target-mq(sm) {
+      min-height: 48px;
+      font-size: 18px;
+    }
+
+    @include target-mq(md) {
+      min-height: 54px;
+      font-size: 20px;
+    }
+
+    @include target-mq(xxl) {
+      min-height: 60px;
+      font-size: 22px;
+    }
   }
 
   i {
-    font-size: 120px;
-    margin: 20px 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 100px;
+
+    @include target-mq(sm) {
+      margin: 25px 0;
+      font-size: 80px;
+    }
+
+    @include target-mq(md) {
+      font-size: 100px;
+    }
+
+    @include target-mq(xxl) {
+      font-size: 120px;
+    }
+  }
+
+  &__location {
+
+    @include target-mq(sm) {
+      font-size: 14px;
+    }
+
+    @include target-mq(md) {
+      font-size: 17px;
+    }
+
+    @include target-mq(lg) {
+      font-size: 20px;
+    }
+
+    @include target-mq(xxl) {
+      font-size: 16px;
+    }
+
+    em {
+      font-weight: bold;
+    }
   }
 
   &__button {
-    color: $color-tan;
+    position: relative;
+    padding-bottom: 3px;
     margin-top: 20px;
+    color: $color-tan;
+    text-decoration: none;
+
+    &:hover {
+      &::after {
+        width: 0;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      width: 100%;
+      background-color: $color-tan;
+      transition: .3s width;
+    }
   }
 }

@@ -1,4 +1,41 @@
 .timelines {
-  display: flex;
-  flex: 1;
+  background: url('assets/img/main-mobile-background.jpg') 0 0 no-repeat;
+  background-size: cover;
+
+  @include target-mq(sm) {
+    background: url('assets/img/main-background.jpg') 0 0 no-repeat;
+    background-size: cover;
+  }
+
+  @include target-mq(md) {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    padding: 30px 15px;
+
+    @include target-mq(sm) {
+      flex-direction: row;
+      gap: 0 15px;
+    }
+
+    @include target-mq(md) {
+      column-gap: 15px;
+    }
+
+    @include target-mq(mlg) {
+      flex: 0 1200px;
+      align-items: center;
+      column-gap: 30px;
+      min-height: 560px;
+      padding: 0;
+    }
+
+    @include target-mq(xxl) {
+    }
+  }
 }

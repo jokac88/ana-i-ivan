@@ -1,19 +1,7 @@
 <template>
-<!--  <Header/>-->
 
-  <div class="container">
+  <div class="flex-container">
+
     <slot/>
   </div>
-
-<!--  <Footer/>-->
 </template>
-
-<script>
-export default {
-  name: "default"
-}
-</script>
-
-<style scoped>
-
-</style>

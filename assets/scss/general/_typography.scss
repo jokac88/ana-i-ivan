@@ -1,18 +1,19 @@
 @font-face {
   font-family: 'LovelyGrace';
-  src: url('../fonts/LovelyGraceBG.otf') format('opentype');
+  src: url('assets/fonts/LovelyGraceBG.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Playfair';
-  src: url('../fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+  src: url('assets/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'PlayfairItalic';
-  src: url('../fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
 }
 
 $font-family-main: LovelyGrace, sans-serif;
 $font-family-secondary: Playfair, serif-serif;
 $font-family-secondary-italic: PlayfairItalic, serif-serif;
+$font-family-bad-script: 'Bad Script', cursive;

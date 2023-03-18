@@ -1,25 +1,20 @@
-<template>
-  <div class="flex-container">
-    <Header :data="data.header"/>
-    <Main :data="data.timelines"/>
-  </div>
-</template>
-
-<script>
+<script setup>
 import data from "~/data.json";
 import Header from "~/components/common/Header";
-import Main from "~/components/common/Main";
+import Timelines from "~/components/elements/Timelines.vue";
+import Form from "~/components/common/Form";
+import BackToTop from "~/components/common/BackToTop";
 
-export default {
-  name: "App",
-  components: {
-    Header,
-    Main
-  },
-  data() {
-    return {
-      data
-    }
-  },
-}
+const {header: headerData, timelines: timelinesData, form: formData} = data;
 </script>
+
+<template>
+
+  <Header :headerData="headerData"/>
+
+  <Timelines :timelinesData="timelinesData"/>
+
+  <Form :formData="formData"/>
+
+  <BackToTop/>
+</template>
