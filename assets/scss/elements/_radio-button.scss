@@ -37,7 +37,7 @@
     align-items: center;
     background-color: $color-light-gray;
     border-radius: 50%;
-    transition: .3s background-color;
+    transition: background-color .3s;
 
     &:after {
       content: "";
@@ -64,6 +64,13 @@
           display: block;
         }
       }
+    }
+  }
+
+  &--is-error {
+
+    .checkmark {
+      border: 1px solid $color-red;
     }
   }
 }

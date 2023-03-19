@@ -11,7 +11,7 @@ const props = defineProps({
   checked: {
     type: String,
     default: ''
-  }
+  },
 })
 </script>
 

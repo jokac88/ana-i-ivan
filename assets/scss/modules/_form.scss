@@ -1,5 +1,6 @@
 .form {
-  background: url('assets/img/form-background.jpg');
+  background: url('assets/img/timelines-mobile-background.jpg') 0 0 no-repeat;
+  background-size: cover;
 
   @include target-mq(xxl) {
     display: flex;
@@ -9,10 +10,11 @@
   &__wrapper {
     display: flex;
     flex-direction: column;
-    padding: 30px 15px;
+    padding: 60px 15px 30px;
 
     @include target-mq(sm) {
-      padding: 50px 100px;
+      padding-right: 100px;
+      padding-left: 100px;
     }
 
     @include target-mq(md) {
@@ -43,13 +45,14 @@
   }
 
   &__element {
+    position: relative;
     flex: 1;
-    margin-bottom: 20px;
+    padding-bottom: 30px;
   }
 
   &__heading {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-size: 60px;
     text-align: center;
     color: $color-dark-green;
@@ -60,8 +63,7 @@
   }
 
   &__text {
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-weight: 500;
     font-family: $font-family-roboto-slab;
   }
@@ -75,13 +77,14 @@
   }
 
   &__input {
+    display: block;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: solid 1px $color-light-gray;
     font-size: 16px;
     color: $color-black;
-    transition: .3s box-shadow;
+    transition: all .3s;
 
     &::placeholder {
       font-size: 13px;
@@ -96,57 +99,91 @@
       outline-width: 0;
     }
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     &:not(textarea) {
       height: 40px;
     }
+
+    &--is-error {
+      border-color: $color-red;
+      box-shadow: unset;
+    }
+
+    .form__guests-names & {
+      flex: 1;
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
-  &__radio-buttons {
+  &__coming {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  &__select {
+  &__guests-number {
     position: relative;
 
     select {
-      margin-bottom: 5px;
       width: 50%;
       cursor: pointer;
       -webkit-appearance: none;
       -moz-appearance: none;
-      transition: .3s all;
-
-      &:disabled {
-        border-color: $color-input-disabled;
-        background-color: $color-input-disabled;
-        cursor: not-allowed;
-      }
+      transition: all .3s;
     }
   }
 
   &__description {
-    margin: 0;
+    margin-top: 5px;
     font-family: $font-family-roboto-slab;
-    font-size: 14px;
+    font-size: 13px;
     color: $color-description;
   }
 
   &__text-area {
     resize: none;
-    transition: .3s all;
+    transition: all .3s;
+  }
 
-    &:disabled {
-      border-color: $color-input-disabled;
-      background-color: $color-input-disabled;
-      cursor: not-allowed;
+  &__flex-container {
+    display: flex;
+    word-break: keep-all;
+  }
+
+  &__guests-names {
+
+    input {
+
+      &.is-hidden {
+        display: none;
+      }
     }
   }
 
-  &__submit-button {
-    position: relative;
+  &__guests-names-list {
+    margin-top: 5px;
+    border-radius: 5px;
     padding: 15px;
+    border: 1px solid transparent;
+    background-color: $color-white;
+    transition: border-color .3s;
+
+    &--is-error {
+      border-color: $color-red;
+    }
+  }
+
+  &__add-guest-button,
+  &__submit-button,
+  &__reset-form-button {
+    position: relative;
+    padding: 0 15px;
+    height: 50px;
     border: none;
     border-radius: 5px;
     font-family: $font-family-roboto-slab;
@@ -155,21 +192,95 @@
     background-color: $color-dark-green;
     color: $color-white;
     cursor: pointer;
-    transition: .6s background-color;
+    transition: all .3s;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: $color-dark-green-hover;
     }
+
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__submit-button {
+
+    span {
+      position: relative;
+    }
+
+    img {
+      position: absolute;
+      top: 50%;
+      right: -45px;
+      transform: translate(0, -50%);
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__add-guest-button {
+    padding: 0 15px;
+    height: 40px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    transition: opacity .3s;
+  }
+
+  &__validation-message {
+    position: absolute;
+    bottom: 10px;
+    font-family: $font-family-roboto-slab;
+    font-size: 12px;
+    color: $color-red;
   }
 
   &__info,
   &__loading,
   &__successful-message {
     font-family: $font-family-roboto-slab;
-    margin-bottom: 0;
   }
 
-  #my-response-iframe {
+  &__successful-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color-black, .5);
+    text-align: center;
+
+    &-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50%;
+      width: 100%;
+      margin: 0 15px;
+      background-color: $color-white;
+
+      @include target-mq(sm) {
+        max-width: 500px;
+      }
+    }
+  }
+
+  &__reset-form-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+  }
+
+  #google-form-response-iframe {
     display: none;
   }
 }
