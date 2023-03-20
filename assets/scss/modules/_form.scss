@@ -242,6 +242,10 @@
     font-family: $font-family-roboto-slab;
   }
 
+  &__info {
+    margin-bottom: 0;
+  }
+
   &__successful-message {
     position: fixed;
     top: 0;
