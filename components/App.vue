@@ -9,7 +9,7 @@ const {header: headerData, timelines: timelinesData, form: formData} = data;
 </script>
 
 <template>
-  <h1>test</h1>
+
   <Header :headerData="headerData"/>
 
   <Timelines :timelinesData="timelinesData"/>
