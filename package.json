@@ -2,13 +2,12 @@
   "private": true,
   "scripts": {
     "dev": "nuxi dev --port=8000",
-    "build_preview": "nuxi build && nuxi preview",
-    "generate": "nuxi generate",
+    "build_preview": "nuxi build",
+    "generate_preview": "nuxi generate",
     "preview": "nuxi preview",
     "postinstall": "nuxi prepare"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
     "lodash": "^4.17.21",
     "nuxt": "^3.2.3",
     "sass": "^1.59.0",

@@ -1,5 +1,5 @@
 <script setup>
-import data from "~/data.json";
+import data from "~/store/data.json";
 import Header from "~/components/common/Header";
 import Timelines from "~/components/elements/Timelines.vue";
 import Form from "~/components/common/Form";
@@ -9,7 +9,7 @@ const {header: headerData, timelines: timelinesData, form: formData} = data;
 </script>
 
 <template>
-
+  <h1>test</h1>
   <Header :headerData="headerData"/>
 
   <Timelines :timelinesData="timelinesData"/>
