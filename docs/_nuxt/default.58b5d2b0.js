@@ -1,0 +1,1 @@
+import{s,o as t,a as o,x as a}from"./entry.65e3fbd6.js";const c={},n={class:"flex-container"};function r(e,l){return t(),o("div",n,[a(e.$slots,"default")])}const f=s(c,[["render",r]]);export{f as default};
