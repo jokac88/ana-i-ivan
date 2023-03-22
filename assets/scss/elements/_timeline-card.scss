@@ -4,7 +4,7 @@
   align-items: center;
   font-family: $font-family-secondary;
   text-align: center;
-  color: $color-tan;
+  color: $color-secondary;
 
   @include target-mq(xxl) {
     flex: 1;
@@ -86,7 +86,7 @@
     position: relative;
     padding-bottom: 3px;
     margin-top: 20px;
-    color: $color-tan;
+    color: $color-secondary;
     text-decoration: none;
 
     &:hover {
@@ -103,7 +103,7 @@
       right: 0;
       height: 1px;
       width: 100%;
-      background-color: $color-tan;
+      background-color: $color-secondary;
       transition: width .3s;
     }
   }

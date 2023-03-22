@@ -9,32 +9,36 @@
     {
       "time": "15:00ч",
       "event": "Црквено<br/>венчање",
-      "icon": "crkva",
+      "icon": "church",
       "location": "<em>Храм Светог Димитрија</em>,<br/>Омладинских бригада 3а, Београд",
       "locationUrl": "https://goo.gl/maps/AnECGrEJYzjvpUUE6"
     },
     {
       "time": "16:30ч",
       "event": "Долазак у<br/>ресторан",
-      "icon": "oltar",
+      "icon": "altar",
       "location": "<em>Ресторан Ђурђевдан</em>,<br/>Зрењаниски пут 106Б, Београд",
       "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
     },
     {
       "time": "17:30ч",
       "event": "Bенчање",
-      "icon": "burme",
+      "icon": "rings",
       "location": "<em>Ресторан Ђурђевдан</em>,<br/>Зрењаниски пут 106Б, Београд",
       "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
     },
     {
       "time": "18:00ч",
       "event": "Почетак<br/>прославе",
-      "icon": "vatromet-ljubavi",
+      "icon": "love-fireworks",
       "location": "<em>Ресторан Ђурђевдан</em>,<br/>Зрењаниски пут 106Б, Београд",
       "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
     }
   ],
+  "story": {
+    "heading": "Наша прича",
+    "text": "Озбиљан корак правимо,\nи велику љубав славимо!\nЖурка века се спрема,\nзато немој да те нема.\nКа Ђурђевдану пођи,\nи на наше весеље дођи.\nЦипеле удобне понеси,\nпа плесни подијум разнеси.\nСвоје најбоље покрете покажи,\nјер опуштеност и добро расположење\nје оно што се од тебе тражи"
+  },
   "form": {
     "heading": "Потврда доласка",
     "name": {
@@ -49,11 +53,11 @@
         "НЕ"
       ],
       "formEntry": "entry.1716217797",
-      "validationMessage": "Одговорите на питање"
+      "validationMessage": "Потврдите долазак"
     },
     "guestsNumber": {
       "question": "Број гостију који долази са мном...",
-      "description": "Изаберите у падајућем менију одговарајући број",
+      "description": "(Изаберите у падајућем менију одговарајући број)",
       "options": [
         0,
         1,
@@ -70,19 +74,17 @@
     },
     "guestsNames": {
       "question": "Имена и презимена гостију који долазе са мном",
-      "description": "Додајте једно по једног госта",
-      "formEntry": "entry.572556099",
-      "addGuestButton": "Додајте госта",
-      "validationMessage": "Ко још долази са %s Вама?"
+      "description": "(Додајте име и презиме једно по једног госта)",
+      "formEntry": "entry.572556099"
     },
     "message": {
       "question": "Порука",
-      "placeholderSingle": "Овде можете оставити поруку ако сте на посебном режиму исхране.",
-      "placeholderMultiple": "Овде можете оставити поруку ако је неко од гостију на посебном режим исхране.",
+      "placeholderSingle": "(Oставитe поруку ако сте на посебном режиму исхране)",
+      "placeholderMultiple": "(Oставитe поруку ако је неко од гостију на посебном режиму исхране)",
       "formEntry": "entry.1101559294"
     },
-    "submitButton": "Пошаљи",
+    "submitButton": "Пошаљите",
     "info": "Молимо Вас да нам потврдите долазак најкасније до 15.04.2023. године",
-    "successfulMessage": "Хвала Вам на одговору.<br/>Видимо се. :)"
+    "successfulMessage": "Хвала Вам на одговору.<br/>Видимо се."
   }
 }

@@ -16,10 +16,8 @@ const props = defineProps({
 </script>
 
 <template>
-
   <label class="radio-button">
     {{ value }}
-
     <input
         type="radio"
         :name="formEntry"
@@ -27,7 +25,6 @@ const props = defineProps({
         :value="value"
         :checked="value === checked"
     />
-
     <span class="checkmark"/>
   </label>
 </template>

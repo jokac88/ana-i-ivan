@@ -22,7 +22,7 @@
     input {
 
       & ~ .checkmark {
-        background-color: $color-dark-green;
+        background-color: $color-secondary-hover;
       }
     }
   }
@@ -58,7 +58,7 @@
     &:checked {
 
       & ~ .checkmark {
-        background-color: $color-dark-green;
+        background-color: $color-secondary;
 
         &:after {
           display: block;
@@ -70,7 +70,7 @@
   &--is-error {
 
     .checkmark {
-      border: 1px solid $color-red;
+      border: 1px solid $color-invalid;
     }
   }
 }

@@ -9,23 +9,14 @@ const props = defineProps({
 </script>
 
 <template>
-
   <header class="header">
-
     <div class="header__wrapper">
-
       <div class="header__headline">
-
         <p>{{ headerData.bride }}</p>
-
         <span>и</span>
-
         <p>{{ headerData.groom }}</p>
-
       </div>
-
       <p class="header__quote">{{ headerData.quote }}</p>
-
       <div class="header__date">{{ headerData.date }}</div>
     </div>
   </header>

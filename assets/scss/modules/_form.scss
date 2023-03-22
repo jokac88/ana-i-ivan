@@ -45,7 +45,6 @@
   }
 
   &__element {
-    position: relative;
     flex: 1;
     padding-bottom: 30px;
   }
@@ -55,7 +54,7 @@
     margin-bottom: 30px;
     font-size: 60px;
     text-align: center;
-    color: $color-dark-green;
+    color: $color-primary;
 
     @include target-mq(xxl) {
       margin-bottom: 30px;
@@ -64,8 +63,8 @@
 
   &__text {
     margin-bottom: 5px;
-    font-weight: 500;
     font-family: $font-family-roboto-slab;
+    color: $color-secondary;
   }
 
   &__required {
@@ -73,63 +72,86 @@
     top: -3px;
     left: -2px;
     font-size: 12px;
-    color: $color-red;
+    color: $color-invalid;
   }
 
   &__input {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: solid 1px $color-light-gray;
-    font-size: 16px;
-    color: $color-black;
-    transition: all .3s;
+    position: relative;
 
-    &::placeholder {
-      font-size: 13px;
-    }
+    &-field {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: solid 1px $color-light-gray;
+      font-size: 16px;
+      color: $color-black;
+      transition: all .3s;
 
-    &:hover:not(:disabled) {
-      box-shadow: 0 0 5pt .5pt $color-light-gray;
-    }
+      &::placeholder {
+        font-size: 13px;
+      }
 
-    &:focus:not(:disabled) {
-      box-shadow: 0 0 5pt 2pt $color-light-gray;
-      outline-width: 0;
-    }
+      &:hover:not(:disabled) {
+        box-shadow: 0 0 5pt .5pt $color-light-gray;
+      }
 
-    &:disabled {
-      cursor: not-allowed;
-    }
+      &:focus:not(:disabled) {
+        box-shadow: 0 0 5pt 2pt $color-light-gray;
+        outline-width: 0;
+      }
 
-    &:not(textarea) {
-      height: 40px;
-    }
+      &::-webkit-search-decoration,
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-results-button,
+      &::-webkit-search-results-decoration {
+        display: none;
+      }
 
-    &--is-error {
-      border-color: $color-red;
-      box-shadow: unset;
-    }
+      &:disabled {
+        cursor: not-allowed;
+      }
 
-    .form__guests-names & {
-      flex: 1;
-      border-right: none;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      &:not(textarea) {
+        height: 40px;
+      }
+
+      &--is-error {
+        border-color: $color-invalid;
+        box-shadow: unset;
+      }
+
+      .form__guests-names & {
+        flex: 1;
+        border-right: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 
+  &__validation-message {
+    position: absolute;
+    bottom: -17px;
+    font-family: $font-family-roboto-slab;
+    font-size: 12px;
+    color: $color-invalid;
+  }
+
   &__coming {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+
+    .form__input {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__guests-number {
     position: relative;
 
     select {
+      background-color: $color-white;
       width: 50%;
       cursor: pointer;
       -webkit-appearance: none;
@@ -139,6 +161,7 @@
   }
 
   &__description {
+    display: flex;
     margin-top: 5px;
     font-family: $font-family-roboto-slab;
     font-size: 13px;
@@ -151,6 +174,7 @@
   }
 
   &__flex-container {
+    position: relative;
     display: flex;
     word-break: keep-all;
   }
@@ -166,15 +190,27 @@
   }
 
   &__guests-names-list {
-    margin-top: 5px;
-    border-radius: 5px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
     padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
     border: 1px solid transparent;
     background-color: $color-white;
     transition: border-color .3s;
 
     &--is-error {
-      border-color: $color-red;
+      border-color: $color-invalid;
+    }
+
+    .form__description {
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 0;
     }
   }
 
@@ -182,20 +218,15 @@
   &__submit-button,
   &__reset-form-button {
     position: relative;
-    padding: 0 15px;
-    height: 50px;
     border: none;
     border-radius: 5px;
-    font-family: $font-family-roboto-slab;
-    font-weight: 700;
-    text-transform: uppercase;
-    background-color: $color-dark-green;
+    background-color: $color-secondary;
     color: $color-white;
     cursor: pointer;
     transition: all .3s;
 
     &:hover:not(:disabled) {
-      background-color: $color-dark-green-hover;
+      background-color: $color-secondary-hover;
     }
 
     &:disabled {
@@ -205,6 +236,11 @@
   }
 
   &__submit-button {
+    padding: 0 15px;
+    height: 50px;
+    font-weight: 700;
+    font-family: $font-family-roboto-slab;
+    text-transform: uppercase;
 
     span {
       position: relative;
@@ -221,19 +257,12 @@
   }
 
   &__add-guest-button {
-    padding: 0 15px;
+    flex: 0 40px;
     height: 40px;
+    padding: 0;
     border: none;
     border-radius: 0 5px 5px 0;
     transition: opacity .3s;
-  }
-
-  &__validation-message {
-    position: absolute;
-    bottom: 10px;
-    font-family: $font-family-roboto-slab;
-    font-size: 12px;
-    color: $color-red;
   }
 
   &__info,
@@ -256,7 +285,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba($color-black, .5);
+    background-color: rgba($color-black, .8);
     text-align: center;
 
     &-wrapper {
@@ -267,6 +296,9 @@
       height: 50%;
       width: 100%;
       margin: 0 15px;
+      border-radius: 5px;
+      font-size: 20px;
+      font-weight: 700;
       background-color: $color-white;
 
       @include target-mq(sm) {
@@ -279,6 +311,9 @@
     position: absolute;
     top: 15px;
     right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 30px;
     padding: 0;

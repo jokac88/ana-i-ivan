@@ -21,9 +21,11 @@ const onScroll = throttle(() => {
 </script>
 
 <template>
-
-  <div class="back-to-top" :class="{'back-to-top--is-visible': isVisible}" @click="backToTop">
-
+  <div
+      class="back-to-top"
+      :class="{'back-to-top--is-visible': isVisible}"
+      @click="backToTop"
+  >
     <i class="icon-double-arrow-top"/>
   </div>
 </template>

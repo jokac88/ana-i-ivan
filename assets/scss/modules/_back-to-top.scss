@@ -34,7 +34,7 @@
 
   i {
     font-size: 18px;
-    color: $color-dark-green;
+    color: $color-primary;
 
     @include target-mq(md) {
       font-size: 22px;

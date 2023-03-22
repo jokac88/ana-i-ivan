@@ -10,20 +10,16 @@ const props = defineProps({
   },
 });
 </script>
-
 <template>
-<div class="guest-name">
-
-  <p class="guest-name__number">{{ index + 1 }}.</p>
-
-  <p class="guest-name__text">{{guestName}}</p>
-
-  <button
-      @click="$emit('delete-guest', index)"
-      type="button"
-      class="guest-name__delete-button"
-  >
-    -
-  </button>
-</div>
+  <div class="guest-name">
+    <p class="guest-name__number">{{ index + 1 }}.</p>
+    <p class="guest-name__text">{{ guestName }}</p>
+    <button
+        @click="$emit('delete-guest', index)"
+        type="button"
+        class="guest-name__delete-button"
+    >
+      <i class="icon-minus"/>
+    </button>
+  </div>
 </template>

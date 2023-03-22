@@ -25,36 +25,62 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-plus {
+
+  &::before {
+    content: $icon-plus;
+  }
+}
+
+.icon-minus {
+
+  &::before {
+    content: $icon-minus;
+  }
+}
+
+.icon-cancel {
+
+  &::before {
+    content: $icon-cancel;
+  }
+}
+
 .icon-double-arrow-top {
+
   &::before {
     content: $icon-double-arrow-top;
   }
 }
 
-.icon-burme {
+.icon-church {
+
   &::before {
-    content: $icon-burme;
+    content: $icon-church;
     color: #d6a998;
   }
 }
 
-.icon-crkva {
+.icon-altar {
+
   &::before {
-    content: $icon-crkva;
+    content: $icon-altar;
     color: #d6a998;
   }
 }
 
-.icon-oltar {
+.icon-rings {
+
   &::before {
-    content: $icon-oltar;
+    content: $icon-rings;
     color: #d6a998;
   }
 }
 
-.icon-vatromet-ljubavi {
+.icon-love-fireworks {
+
   &::before {
-    content: $icon-vatromet-ljubavi;
+    content: $icon-love-fireworks;
     color: #d6a998;
   }
 }
