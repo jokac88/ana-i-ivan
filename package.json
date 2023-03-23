@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "nuxi dev --port=8000",
     "build": "nuxi build",
-    "generate_deploy": "nuxi generate && gh-pages --dotfiles -d dist",
+    "generate": "nuxi generate",
+    "deploy": "gh-pages --dotfiles -d dist",
     "preview": "nuxi preview",
     "postinstall": "nuxi prepare"
   },

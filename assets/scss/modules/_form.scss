@@ -4,7 +4,8 @@
 
   @include target-mq(xxl) {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__wrapper {
@@ -33,7 +34,7 @@
     }
 
     @include target-mq(xxl) {
-      flex: 0 600px;
+      min-width: 600px;
       padding-right: 0;
       padding-left: 0;
     }
@@ -52,9 +53,9 @@
   &__heading {
     margin-top: 0;
     margin-bottom: 30px;
+    font-family: $font-family-secondary;
     font-size: 60px;
     text-align: center;
-    color: $color-primary;
 
     @include target-mq(xxl) {
       margin-bottom: 30px;
@@ -63,7 +64,6 @@
 
   &__text {
     margin-bottom: 5px;
-    font-family: $font-family-roboto-slab;
     color: $color-secondary;
   }
 
@@ -85,7 +85,8 @@
       border-radius: 5px;
       border: solid 1px $color-light-gray;
       font-size: 16px;
-      color: $color-black;
+      font-weight: 500;
+      color: $color-primary;
       transition: all .3s;
 
       &::placeholder {
@@ -133,7 +134,6 @@
   &__validation-message {
     position: absolute;
     bottom: -17px;
-    font-family: $font-family-roboto-slab;
     font-size: 12px;
     color: $color-invalid;
   }
@@ -153,6 +153,7 @@
     select {
       background-color: $color-white;
       width: 50%;
+      font-weight: 500;
       cursor: pointer;
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -163,14 +164,11 @@
   &__description {
     display: flex;
     margin-top: 5px;
-    font-family: $font-family-roboto-slab;
     font-size: 13px;
-    color: $color-description;
   }
 
   &__text-area {
     resize: none;
-    transition: all .3s;
   }
 
   &__flex-container {
@@ -216,7 +214,7 @@
 
   &__add-guest-button,
   &__submit-button,
-  &__reset-form-button {
+  &__close-form-button {
     position: relative;
     border: none;
     border-radius: 5px;
@@ -238,8 +236,8 @@
   &__submit-button {
     padding: 0 15px;
     height: 50px;
+    font-size: 14px;
     font-weight: 700;
-    font-family: $font-family-roboto-slab;
     text-transform: uppercase;
 
     span {
@@ -265,14 +263,30 @@
     transition: opacity .3s;
   }
 
-  &__info,
-  &__loading,
-  &__successful-message {
-    font-family: $font-family-roboto-slab;
+  &__info {
+    padding-right: 15px;
+    padding-left: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+
+    @include target-mq(sm) {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+
+    @include target-mq(md) {
+      padding-right: 50px;
+      padding-left: 50px;
+    }
+
+    @include target-mq(xxl) {
+      font-size: 18px;
+    }
   }
 
-  &__info {
-    margin-bottom: 0;
+  #google-form-response-iframe {
+    display: none;
   }
 
   &__successful-message {
@@ -293,21 +307,24 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 50%;
+      height: 40%;
       width: 100%;
       margin: 0 15px;
       border-radius: 5px;
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 500;
       background-color: $color-white;
 
       @include target-mq(sm) {
+        margin-right: 0;
+        margin-left: 0;
+        height: 300px;
         max-width: 500px;
       }
     }
   }
 
-  &__reset-form-button {
+  &__close-form-button {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -317,9 +334,5 @@
     width: 30px;
     height: 30px;
     padding: 0;
-  }
-
-  #google-form-response-iframe {
-    display: none;
   }
 }

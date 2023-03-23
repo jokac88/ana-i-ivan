@@ -4,6 +4,7 @@
   justify-content: center;
   height: 100vh;
   padding-top: 100px;
+  font-family: $font-family-secondary;
   text-align: center;
   background: url('assets/img/header-mobile-background.png');
   background-size: 667px auto;
@@ -39,7 +40,6 @@
   &__headline {
     display: flex;
     flex-direction: column;
-    color: $color-primary;
     font-size: 70px;
     line-height: 1;
 
@@ -58,7 +58,7 @@
 
   &__quote {
     margin: 30px 0;
-    font-family: $font-family-secondary-italic;
+    font-family: $font-family-primary;
     font-size: 20px;
     color: $color-secondary;
 
@@ -70,7 +70,6 @@
   &__date {
     font-size: 70px;
     line-height: 1;
-    color: $color-primary;
 
     @include target-mq(xxl) {
       font-size: 100px;

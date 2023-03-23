@@ -1,9 +1,15 @@
 <script setup>
-import RadioButton from "~/components/elements/RadioButton.vue";
-import GuestName from "~/components/elements/GuestName.vue";
+import RadioButton from "~/components/elements/RadioButton";
+import GuestName from "~/components/elements/GuestName";
+import Countdown from "~/components/common/Countdown";
 
 const props = defineProps({
   formData: {
+    type: Object,
+    default: () => {
+    }
+  },
+  countdownData: {
     type: Object,
     default: () => {
     }
@@ -77,7 +83,7 @@ function onSubmit() {
     return false;
   }
 
-  if (guestsNumber.value - 1 !== guestsNames.value.length) {
+  if (coming.value === 'ДА' && guestsNumber.value - 1 !== guestsNames.value.length) {
     const element = document.querySelector('.form__guests-names');
     scrollToElement(element);
 
@@ -203,11 +209,12 @@ function resetForm() {
               <p v-if="guestsNames.length !== guestsNumber - 1" class="form__description">
                 <span v-if="guestsNames.length < guestsNumber - 1">
                   Додајте
-                   {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
+                  {{ guestsNames.length ? 'још' : '' }}
+                  {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
                 </span>
                 <span v-else>
-                  Oдузмите
-                   {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
+                  Oдузмите још
+                  {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
                 </span>
               </p>
             </div>
@@ -239,19 +246,20 @@ function resetForm() {
             <img v-if="isLoading" src="~/assets/img/loader.gif" alt="~/assets/img/loader.gif"/>
           </span>
         </button>
-        <Transition>
-          <div v-if="isSuccessful" class="form__successful-message">
-            <div class="form__successful-message-wrapper">
-              <p v-html="formData.successfulMessage"></p>
-              <button @click="resetForm" type="button" class="form__reset-form-button">
-                <i class="icon-cancel"/>
-              </button>
-            </div>
-          </div>
-        </Transition>
         <iframe id="google-form-response-iframe" name="google-form-response-iframe"/>
       </form>
-      <h4 class="form__info">{{ formData.info }}</h4>
+      <Transition>
+        <div v-if="isSuccessful" class="form__successful-message">
+          <div class="form__successful-message-wrapper">
+            <p v-html="formData.successfulMessage"></p>
+            <button @click="resetForm" type="button" class="form__close-form-button">
+              <i class="icon-cancel"/>
+            </button>
+          </div>
+        </div>
+      </Transition>
     </div>
+    <p class="form__info">{{ formData.info }}</p>
+    <Countdown :countdown-data="countdownData"/>
   </section>
 </template>

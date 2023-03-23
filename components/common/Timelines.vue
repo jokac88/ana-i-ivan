@@ -1,5 +1,5 @@
 <script setup>
-import TimelineCard from "~/components/elements/TimelineCard.vue";
+import TimelineCard from "~/components/elements/TimelineCard";
 
 const props = defineProps({
   timelinesData: {

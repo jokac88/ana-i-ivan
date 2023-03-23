@@ -1,0 +1,40 @@
+
+.countdown {
+  background: url('assets/img/story-background.jpg') center no-repeat;
+  background-size: cover;
+
+  &__wrapper {
+    @extend .story__wrapper;
+
+    @include target-mq(sm) {
+      justify-content: center;
+    }
+
+    @include target-mq(mlg) {
+      column-gap: 50px;
+    }
+  }
+
+  &__info {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 30px;
+
+    @extend .form__info;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: $font-family-secondary;
+    font-size: 60px;
+    text-transform: uppercase;
+    line-height: 1;
+
+    span {
+      font-family: $font-family-primary;
+      font-size: 20px;
+    }
+  }
+}

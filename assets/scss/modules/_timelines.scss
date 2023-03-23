@@ -37,6 +37,7 @@
 
     @include target-mq(xxl) {
       flex: 0 1200px;
+      column-gap: 10px;
       padding: 0;
     }
   }

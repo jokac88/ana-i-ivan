@@ -12,17 +12,10 @@ const props = defineProps({
 <template>
   <section class="story">
     <div class="story__wrapper">
-      <div class="story__heading">
-        {{ storyData.heading }}
+      <div class="story__image">
+        <img src="~/assets/img/hug.png" alt="~/assets/img/hug.png"/>
       </div>
-      <div class="story__flex-container">
-        <div class="story__image">
-          <img src="~/assets/img/hug.png" alt="~/assets/img/hug.png"/>
-        </div>
-        <div class="story__text">
-          {{ storyData.text }}
-        </div>
-      </div>
+      <div v-html="storyData.text" class="story__text"/>
     </div>
   </section>
 </template>

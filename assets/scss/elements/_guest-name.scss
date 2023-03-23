@@ -2,7 +2,6 @@
   display: flex;
   column-gap: 5px;
   align-items: center;
-  font-family: $font-family-roboto-slab;
   word-break: break-all;
 
   + .guest-name {
@@ -11,8 +10,8 @@
 
   &__number,
   &__text {
-    font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: 500;
   }
 
   &__text {
