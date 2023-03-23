@@ -9,6 +9,7 @@
     "postinstall": "nuxi prepare"
   },
   "devDependencies": {
+    "@kevinmarrec/nuxt-pwa": "^0.17.0",
     "gh-pages": "^5.0.0",
     "lodash": "^4.17.21",
     "nuxt": "^3.2.3",

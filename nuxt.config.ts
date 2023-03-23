@@ -40,5 +40,8 @@ export default defineNuxtConfig({
             ]
         },
     },
+    modules: [
+        '@kevinmarrec/nuxt-pwa'
+    ],
     css: ['@/assets/scss/main.scss']
 })
