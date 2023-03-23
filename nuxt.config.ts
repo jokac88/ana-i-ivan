@@ -44,7 +44,6 @@ export default defineNuxtConfig({
             ]
         },
     },
-    modules: ['@nuxtjs/critters',],
     pwa: {
         /* your pwa options */
     },
