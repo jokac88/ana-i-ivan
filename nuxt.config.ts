@@ -40,11 +40,11 @@ export default defineNuxtConfig({
             ],
             noscript: [
                 // <noscript>JavaScript is required</noscript>
-                { children: 'JavaScript is required' }
+                {children: 'JavaScript is required'}
             ]
         },
     },
-    modules: ['@vite-pwa/nuxt'],
+    modules: ['@vite-pwa/nuxt', '@nuxtjs/critters',],
     pwa: {
         /* your pwa options */
     },

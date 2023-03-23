@@ -15,5 +15,8 @@
     "nuxt": "^3.2.3",
     "sass": "^1.59.0",
     "sass-loader": "^10.4.1"
+  },
+  "dependencies": {
+    "@nuxtjs/critters": "^0.4.0"
   }
 }
