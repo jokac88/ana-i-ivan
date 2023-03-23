@@ -15,6 +15,10 @@ export default defineNuxtConfig({
                 {
                     name: 'keywords',
                     content: 'Ана, Иван'
+                },
+                {
+                    name: 'theme-color',
+                    content: '#577567'
                 }
             ],
             link: [
