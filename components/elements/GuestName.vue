@@ -15,9 +15,9 @@ const props = defineProps({
     <p class="guest-name__number">{{ index + 1 }}.</p>
     <p class="guest-name__text">{{ guestName }}</p>
     <button
-        @click="$emit('delete-guest', index)"
+        @click="$emit('remove-guest', index)"
         type="button"
-        class="guest-name__delete-button"
+        class="guest-name__remove-guest-button"
     >
       <i class="icon-minus"/>
     </button>

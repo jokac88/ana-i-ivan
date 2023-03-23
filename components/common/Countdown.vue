@@ -48,7 +48,7 @@ onBeforeUnmount(() => clearInterval(setFunctionInterval))
         <span>Сати</span>
       </div>
       <div class="countdown__text">
-        {{ minutes }}
+        {{ minutes < 10 ? `0${minutes}` : minutes  }}
         <span>Минути</span>
       </div>
       <div class="countdown__text">

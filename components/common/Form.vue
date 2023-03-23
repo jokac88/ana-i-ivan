@@ -44,7 +44,7 @@ const guestsObject = {
   9: 'девет гостију',
 }
 const guestName = ref('');
-const message = ref('');
+const note = ref('');
 const isSubmit = ref(false);
 const isLoading = ref(false);
 const isSuccessful = ref(false);
@@ -56,7 +56,7 @@ function addGuest() {
   }
 }
 
-function deleteGuest(index) {
+function removeGuest(index) {
   guestsNames.value.splice(index, 1);
 }
 
@@ -96,7 +96,7 @@ function onSubmit() {
   isLoading.value = true;
 
   if (googleIframe) {
-    googleIframe.onload = () => {
+    googleIframe.onload = (response) => {
       isLoading.value = false;
       isSuccessful.value = true;
     }
@@ -104,7 +104,7 @@ function onSubmit() {
 }
 
 function resetForm() {
-  name.value = coming.value = message.value = '';
+  name.value = coming.value = note.value = '';
   guestsNumber.value = 1;
   guestsNames.value = [];
   isSubmit.value = isLoading.value = isSuccessful.value = false;
@@ -204,9 +204,13 @@ function resetForm() {
                   v-for="(guest, index) in guestsNames"
                   :guest-name="guest"
                   :index="index"
-                  @deleteGuest="deleteGuest"
+                  @removeGuest="removeGuest"
               />
-              <p v-if="guestsNames.length !== guestsNumber - 1" class="form__description">
+              <p
+                  v-if="guestsNames.length !== guestsNumber - 1"
+                  :class="{'form__guests-number-info--is-error': isSubmit && guestsNames.length !== guestsNumber - 1 }"
+                  class="form__guests-number-info"
+              >
                 <span v-if="guestsNames.length < guestsNumber - 1">
                   Додајте
                   {{ guestsNames.length ? 'још' : '' }}
@@ -217,6 +221,8 @@ function resetForm() {
                   {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
                 </span>
               </p>
+              <p v-if="isSubmit && guestsNames.length !== guestsNumber - 1" class="form__validation-message">
+                {{ formData.guestsNames.validationMessage }}</p>
             </div>
             <input
                 type="text"
@@ -227,14 +233,14 @@ function resetForm() {
           </div>
           <div class="form__element">
             <p class="form__text">
-              {{ formData.message.question }}
+              {{ formData.note.question }}
               <span class="form__description">
-                {{ guestsNumber === 1 ? formData.message.placeholderSingle : formData.message.placeholderMultiple }}
+                {{ formData.note.description }}
               </span>
             </p>
             <textarea
-                :name="formData.message.formEntry"
-                v-model="message"
+                :name="formData.note.formEntry"
+                v-model="note"
                 rows="4"
                 class="form__input-field form__text-area"
             />

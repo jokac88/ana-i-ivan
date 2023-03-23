@@ -14,8 +14,8 @@
     padding: 60px 15px 30px;
 
     @include target-mq(sm) {
-      padding-right: 100px;
-      padding-left: 100px;
+      padding-right: 150px;
+      padding-left: 150px;
     }
 
     @include target-mq(md) {
@@ -35,6 +35,7 @@
 
     @include target-mq(xxl) {
       min-width: 600px;
+      max-width: 600px;
       padding-right: 0;
       padding-left: 0;
     }
@@ -57,6 +58,14 @@
     font-size: 60px;
     text-align: center;
 
+    @include target-mq(sm) {
+      font-size: 65px;
+    }
+
+    @include target-mq(md) {
+      font-size: 70px;
+    }
+
     @include target-mq(xxl) {
       margin-bottom: 30px;
     }
@@ -65,13 +74,18 @@
   &__text {
     margin-bottom: 5px;
     color: $color-secondary;
+
+    @include target-mq(xxl) {
+      font-size: 18px;
+    }
   }
 
   &__required {
     position: relative;
     top: -3px;
-    left: -2px;
+    left: -3px;
     font-size: 12px;
+    font-weight: 700;
     color: $color-invalid;
   }
 
@@ -133,8 +147,9 @@
 
   &__validation-message {
     position: absolute;
-    bottom: -17px;
-    font-size: 12px;
+    top: 100%;
+    font-size: 13px;
+    font-weight: 500;
     color: $color-invalid;
   }
 
@@ -164,7 +179,9 @@
   &__description {
     display: flex;
     margin-top: 5px;
+    font-weight: 500;
     font-size: 13px;
+    color: $color-primary;
   }
 
   &__text-area {
@@ -195,7 +212,7 @@
     padding: 15px;
     margin-top: 10px;
     border-radius: 5px;
-    border: 1px solid transparent;
+    border: 1px solid $color-light-gray;
     background-color: $color-white;
     transition: border-color .3s;
 
@@ -203,12 +220,25 @@
       border-color: $color-invalid;
     }
 
-    .form__description {
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-top: 0;
+    .form {
+
+      &__guests-number-info {
+        display: flex;
+        justify-content: center;
+        margin-top: 0;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: color .3s;
+
+        &--is-error {
+          color: $color-invalid;
+        }
+      }
+
+      &__validation-message {
+        left: 0;
+      }
     }
   }
 
@@ -216,6 +246,7 @@
   &__submit-button,
   &__close-form-button {
     position: relative;
+    padding: 2px 0 0;
     border: none;
     border-radius: 5px;
     background-color: $color-secondary;
@@ -234,7 +265,8 @@
   }
 
   &__submit-button {
-    padding: 0 15px;
+    padding-right: 15px;
+    padding-left: 15px;
     height: 50px;
     font-size: 14px;
     font-weight: 700;
@@ -257,7 +289,6 @@
   &__add-guest-button {
     flex: 0 40px;
     height: 40px;
-    padding: 0;
     border: none;
     border-radius: 0 5px 5px 0;
     transition: opacity .3s;
@@ -267,20 +298,18 @@
     padding-right: 15px;
     padding-left: 15px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
 
     @include target-mq(sm) {
       padding-right: 30px;
       padding-left: 30px;
+      font-size: 17px;
     }
 
     @include target-mq(md) {
       padding-right: 50px;
       padding-left: 50px;
-    }
-
-    @include target-mq(xxl) {
       font-size: 18px;
     }
   }

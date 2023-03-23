@@ -16,7 +16,7 @@
   cursor: pointer;
   transition: all .3s;
 
-  @include target-mq(md) {
+  @include target-mq(sm) {
     right: 30px;
     bottom: 30px;
     width: 60px;

@@ -13,31 +13,38 @@
   }
 
   &__wrapper {
-    display: flex;
-    flex-direction: column;
-    row-gap: 50px;
-    padding: 30px 15px;
+    display: grid;
+    grid-row-gap: 55px;
+    padding: 60px 15px;
 
     @include target-mq(sm) {
-      flex-direction: row;
-      gap: 0 15px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 75px 15px;
+      padding-right: 100px;
+      padding-left: 100px;
     }
 
     @include target-mq(md) {
-      column-gap: 15px;
+      grid-column-gap: 30px;
+    }
+
+    @include target-mq(lg) {
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 15px;
+      padding-right: 30px;
+      padding-left: 30px;
     }
 
     @include target-mq(mlg) {
-      justify-content: center;
+      grid-row-gap: 30px;
       align-items: center;
-      column-gap: 30px;
-      padding: 30px;
       min-height: 560px;
+      padding: 30px 80px;
     }
 
     @include target-mq(xxl) {
-      flex: 0 1200px;
-      column-gap: 10px;
+      max-width: 1300px;
+      column-gap: 30px;
       padding: 0;
     }
   }

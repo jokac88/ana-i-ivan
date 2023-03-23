@@ -1,27 +1,23 @@
 .guest-name {
   display: flex;
-  column-gap: 5px;
+  row-gap: 15px;
+  column-gap: 10px;
   align-items: center;
   word-break: break-all;
-
-  + .guest-name {
-    margin-top: 10px;
-  }
 
   &__number,
   &__text {
     font-size: 20px;
-    font-weight: 500;
   }
 
   &__text {
     flex: 1;
   }
 
-  &__delete-button {
-    flex-basis: 40px;
-    height: 40px;
-    padding: 0;
+  &__remove-guest-button {
+    flex-basis: 35px;
+    height: 35px;
+    padding: 2px 0 0;
     border: none;
     border-radius: 5px;
     color: $color-white;
