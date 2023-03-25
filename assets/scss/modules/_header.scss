@@ -77,21 +77,25 @@
   &__quote {
     margin: 30px 0;
     font-family: $font-family-primary;
-    font-size: 20px;
+    font-size: 19px;
     color: $color-secondary;
 
     @include target-mq(sm) {
       margin-top: 50px;
       margin-bottom: 50px;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     @include target-mq(md) {
-      font-size: 24px;
+      font-size: 21px;
+    }
+
+    @include target-mq(mlg) {
+      font-size: 22px;
     }
 
     @include target-mq(xxl) {
-      font-size: 26px;
+      font-size: 23px;
     }
   }
 

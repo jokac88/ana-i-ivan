@@ -25,46 +25,59 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-plus {
+.icon-back-to-top {
 
   &::before {
-    content: $icon-plus;
+    content: $icon-back-to-top;
   }
 }
 
-.icon-minus {
+.icon-close {
 
   &::before {
-    content: $icon-minus;
+    content: $icon-close;
   }
 }
 
-.icon-cancel {
+.icon-user-delete {
 
   &::before {
-    content: $icon-cancel;
+    content: $icon-user-delete;
   }
 }
 
-.icon-double-arrow-top {
+.icon-user-add {
 
   &::before {
-    content: $icon-double-arrow-top;
+    content: $icon-user-add;
   }
 }
 
-.icon-church {
+.icon-dropdown {
 
   &::before {
-    content: $icon-church;
-    color: #d6a998;
+    content: $icon-dropdown;
   }
 }
 
-.icon-altar {
+.icon-facebook {
 
   &::before {
-    content: $icon-altar;
+    content: $icon-facebook;
+  }
+}
+
+.icon-instagram {
+
+  &::before {
+    content: $icon-instagram;
+  }
+}
+
+.icon-love-fireworks {
+
+  &::before {
+    content: $icon-love-fireworks;
     color: #d6a998;
   }
 }
@@ -77,10 +90,18 @@
   }
 }
 
-.icon-love-fireworks {
+.icon-altar {
 
   &::before {
-    content: $icon-love-fireworks;
+    content: $icon-altar;
+    color: #d6a998;
+  }
+}
+
+.icon-church {
+
+  &::before {
+    content: $icon-church;
     color: #d6a998;
   }
 }

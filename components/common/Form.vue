@@ -16,17 +16,6 @@ const props = defineProps({
   },
 });
 
-onMounted(() => {
-  const googleForm = document.getElementById('google-form');
-
-  googleForm.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      return false;
-    }
-  })
-});
-
 const googleFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
 const name = ref('');
 const coming = ref('');
@@ -42,12 +31,24 @@ const guestsObject = {
   7: 'седам гостију',
   8: 'осам гостију',
   9: 'девет гостију',
-}
+};
 const guestName = ref('');
 const note = ref('');
-const isSubmit = ref(false);
+const isSubmitted = ref(false);
 const isLoading = ref(false);
 const isSuccessful = ref(false);
+
+const guestNameInputDisabled = computed(() => {
+  return guestsNumber.value - 1 === guestsNames.value.length || guestsNumber.value - 1 < guestsNames.value.length;
+});
+
+const guestNameButtonDisabled = computed(() => {
+  return !guestName.value || guestsNumber.value - 1 === guestsNames.value.length || guestsNumber.value - 1 < guestsNames.value.length;
+});
+
+const additionalQuestions = computed(() => {
+  return coming.value === 'ДА';
+});
 
 function addGuest() {
   if (guestName.value) {
@@ -65,8 +66,8 @@ function scrollToElement(element) {
 }
 
 function onSubmit() {
-  if (!isSubmit.value) {
-    isSubmit.value = true;
+  if (!isSubmitted.value) {
+    isSubmitted.value = true;
   }
 
   if (!name.value) {
@@ -96,7 +97,7 @@ function onSubmit() {
   isLoading.value = true;
 
   if (googleIframe) {
-    googleIframe.onload = (response) => {
+    googleIframe.onload = () => {
       isLoading.value = false;
       isSuccessful.value = true;
     }
@@ -107,9 +108,19 @@ function resetForm() {
   name.value = coming.value = note.value = '';
   guestsNumber.value = 1;
   guestsNames.value = [];
-  isSubmit.value = isLoading.value = isSuccessful.value = false;
+  isSubmitted.value = isLoading.value = isSuccessful.value = false;
 }
 
+onMounted(() => {
+  const googleForm = document.getElementById('google-form');
+
+  googleForm.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      return false;
+    }
+  })
+});
 </script>
 
 <template>
@@ -133,10 +144,10 @@ function resetForm() {
                 type="text"
                 :name="formData.name.formEntry"
                 v-model="name"
-                :class="{'form__input-field--is-error': isSubmit && !name }"
+                :class="{'form__input-field--is-error': isSubmitted && !name }"
                 class="form__input-field"
             />
-            <p v-if="isSubmit && !name" class="form__validation-message">{{ formData.name.validationMessage }}</p>
+            <p v-if="isSubmitted && !name" class="form__validation-message">{{ formData.name.validationMessage }}</p>
           </div>
         </div>
         <div class="form__element form__coming">
@@ -150,34 +161,39 @@ function resetForm() {
                 :value="value"
                 :checked="coming"
                 :form-entry="formData.coming.formEntry"
-                :class="{'radio-button--is-error': isSubmit && !coming }"
+                :class="{'radio-button--is-error': isSubmitted && !coming }"
                 @radio-button-clicked="event => coming = event"
             />
-            <p v-if="isSubmit && !coming" class="form__validation-message">{{ formData.coming.validationMessage }}</p>
+            <p v-if="isSubmitted && !coming" class="form__validation-message">{{
+                formData.coming.validationMessage
+              }}</p>
           </div>
         </div>
-        <div v-if="coming === 'ДА'" class="form__additional-questions">
+        <div v-if="additionalQuestions" class="form__additional-questions">
           <div class="form__element form__guests-number">
             <p class="form__text">
               {{ formData.guestsNumber.question }}
               <span class="form__description">{{ formData.guestsNumber.description }}</span>
             </p>
-            <select
-                :name="formData.guestsNumber.formEntry"
-                v-model="guestsNumber"
-                class="form__input-field"
-            >
-              <option v-for="(option, index) in formData.guestsNumber.options" :value="option + 1">
-                <template v-if="!index">Само ја</template>
-                <template v-else>+{{ option }}</template>
-              </option>
-            </select>
+            <div class="form__select">
+              <select
+                  :name="formData.guestsNumber.formEntry"
+                  v-model="guestsNumber"
+                  class="form__input-field"
+              >
+                <option v-for="(option, index) in formData.guestsNumber.options" :value="option + 1">
+                  <template v-if="!index">Само ја</template>
+                  <template v-else>+{{ option }}</template>
+                </option>
+              </select>
+              <i class="icon-dropdown"/>
+            </div>
           </div>
           <div v-if="guestsNumber > 1" class="form__element form__guests-names">
             <p class="form__text">
               {{ formData.guestsNames.question }}
               <span class="form__required">*</span>
-              <span class="form__description">{{ formData.guestsNames.description }}</span>
+              <span v-html="formData.guestsNames.description" class="form__description"/>
             </p>
             <div class="form__flex-container">
               <input
@@ -185,19 +201,19 @@ function resetForm() {
                   @keyup.enter="addGuest"
                   v-model="guestName"
                   class="form__input-field"
-                  :disabled="guestsNumber - 1 === guestsNames.length || guestsNumber - 1 < guestsNames.length"
+                  :disabled="guestNameInputDisabled"
               />
               <button
                   type="button"
                   @click="addGuest"
                   class="form__add-guest-button"
-                  :disabled="!guestName || guestsNumber - 1 === guestsNames.length || guestsNumber - 1 < guestsNames.length"
+                  :disabled="guestNameButtonDisabled"
               >
-                <i class="icon-plus"/>
+                <i class="icon-user-add"/>
               </button>
             </div>
             <div
-                :class="{'form__guests-names-list--is-error': isSubmit && guestsNames.length !== guestsNumber - 1 }"
+                :class="{'form__guests-names-list--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
                 class="form__guests-names-list"
             >
               <GuestName
@@ -208,12 +224,11 @@ function resetForm() {
               />
               <p
                   v-if="guestsNames.length !== guestsNumber - 1"
-                  :class="{'form__guests-number-info--is-error': isSubmit && guestsNames.length !== guestsNumber - 1 }"
+                  :class="{'form__guests-number-info--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
                   class="form__guests-number-info"
               >
                 <span v-if="guestsNames.length < guestsNumber - 1">
-                  Додајте
-                  {{ guestsNames.length ? 'још' : '' }}
+                  Додајте још
                   {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
                 </span>
                 <span v-else>
@@ -221,7 +236,7 @@ function resetForm() {
                   {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
                 </span>
               </p>
-              <p v-if="isSubmit && guestsNames.length !== guestsNumber - 1" class="form__validation-message">
+              <p v-if="isSubmitted && guestsNames.length !== guestsNumber - 1" class="form__validation-message">
                 {{ formData.guestsNames.validationMessage }}</p>
             </div>
             <input
@@ -259,7 +274,7 @@ function resetForm() {
           <div class="form__successful-message-wrapper">
             <p v-html="formData.successfulMessage"></p>
             <button @click="resetForm" type="button" class="form__close-form-button">
-              <i class="icon-cancel"/>
+              <i class="icon-close"/>
             </button>
           </div>
         </div>

@@ -3,9 +3,6 @@ import throttle from 'lodash/throttle';
 
 let isVisible = ref(false);
 
-onMounted(() => window.addEventListener('scroll', onScroll));
-onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
-
 function backToTop() {
   window.scrollTo({
     top: 0,
@@ -18,6 +15,9 @@ const onScroll = throttle(() => {
 
   isVisible.value = currentScrollYPosition >= 600;
 }, 500);
+
+onMounted(() => window.addEventListener('scroll', onScroll));
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 </script>
 
 <template>
@@ -26,6 +26,6 @@ const onScroll = throttle(() => {
       :class="{'back-to-top--is-visible': isVisible}"
       @click="backToTop"
   >
-    <i class="icon-double-arrow-top"/>
+    <i class="icon-back-to-top"/>
   </div>
 </template>

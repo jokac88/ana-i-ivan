@@ -37,15 +37,13 @@
 
     @include target-mq(mlg) {
       grid-row-gap: 30px;
-      align-items: center;
-      min-height: 560px;
-      padding: 30px 80px;
+      padding: 50px 80px;
     }
 
     @include target-mq(xxl) {
-      max-width: 1300px;
+      min-width: 1200px;
       column-gap: 30px;
-      padding: 0;
+      padding: 50px 0;
     }
   }
 }

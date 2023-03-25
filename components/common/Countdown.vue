@@ -8,9 +8,9 @@ const props = defineProps({
   },
 });
 
-const weddingDate = "May 20, 2023 15:00:00";
+const weddingDate = "May 20, 2023 15:00:00 GMT+01:00";
 let timeleft = ref(0);
-let days = ref(10);
+let days = ref(0);
 let hours = ref(0);
 let minutes = ref(0);
 let seconds = ref(0);

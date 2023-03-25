@@ -33,11 +33,11 @@
   }
 
   i {
-    font-size: 18px;
+    font-size: 28px;
     color: $color-secondary;
 
     @include target-mq(md) {
-      font-size: 22px;
+      font-size: 32px;
     }
   }
 }

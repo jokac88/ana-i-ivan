@@ -74,10 +74,6 @@
   &__text {
     margin-bottom: 5px;
     color: $color-secondary;
-
-    @include target-mq(xxl) {
-      font-size: 18px;
-    }
   }
 
   &__required {
@@ -165,9 +161,20 @@
   &__guests-number {
     position: relative;
 
+    .form__select {
+      position: relative;
+      width: 50%;
+
+      i {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        color: $color-secondary
+      }
+    }
+
     select {
       background-color: $color-white;
-      width: 50%;
       font-weight: 500;
       cursor: pointer;
       -webkit-appearance: none;
@@ -178,7 +185,7 @@
 
   &__description {
     display: flex;
-    margin-top: 5px;
+    margin-top: 3px;
     font-weight: 500;
     font-size: 13px;
     color: $color-primary;
@@ -224,11 +231,9 @@
 
       &__guests-number-info {
         display: flex;
-        justify-content: center;
         margin-top: 0;
         font-size: 14px;
         font-weight: 500;
-        text-transform: uppercase;
         transition: color .3s;
 
         &--is-error {
@@ -287,11 +292,16 @@
   }
 
   &__add-guest-button {
+    padding-top: 0;
     flex: 0 40px;
     height: 40px;
     border: none;
     border-radius: 0 5px 5px 0;
     transition: opacity .3s;
+
+    i {
+      font-size: 20px;
+    }
   }
 
   &__info {
@@ -304,13 +314,13 @@
     @include target-mq(sm) {
       padding-right: 30px;
       padding-left: 30px;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     @include target-mq(md) {
       padding-right: 50px;
       padding-left: 50px;
-      font-size: 18px;
+      font-size: 17px;
     }
   }
 
@@ -363,5 +373,9 @@
     width: 30px;
     height: 30px;
     padding: 0;
+
+    i {
+      font-size: 18px;
+    }
   }
 }

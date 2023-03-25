@@ -16,18 +16,18 @@
   }
 
   &__info {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     margin-top: 60px;
 
     @extend .form__info;
 
     @include target-mq(sm) {
-      font-size: 19px;
+      font-size: 18px;
     }
 
     @include target-mq(md) {
-      font-size: 20px;
+      font-size: 19px;
     }
   }
 
@@ -41,16 +41,16 @@
     line-height: 1;
 
     @include target-mq(xxl) {
-      font-size: 80px;
+      font-size: 75px;
     }
 
     span {
       font-family: $font-family-primary;
       font-weight: 500;
-      font-size: 22px;
+      font-size: 20px;
 
       @include target-mq(xxl) {
-        font-size: 25px;
+        font-size: 22px;
       }
     }
   }

@@ -1,4 +1,6 @@
 <script setup>
+import SocialNetworkCard from "~/components/elements/SocialNetworkCard";
+
 const props = defineProps({
   timeline: {
     type: Object,
@@ -12,8 +14,17 @@ const props = defineProps({
   <section class="timeline-card">
     <p class="timeline-card__time">{{ timeline.time }}</p>
     <p v-html="timeline.event" class="timeline-card__event"/>
-    <i :class="`icon-${timeline.icon}`"/>
+    <i :class="timeline.icon" class="timeline-card__event-icon"/>
     <p v-html="timeline.location" class="timeline-card__location"></p>
-    <a :href="timeline.locationUrl" target="_blank" class="timeline-card__button">Види на мапи</a>
+    <NuxtLink
+        :to="timeline.locationUrl"
+        target="_blank"
+        class="timeline-card__map-button"
+    >
+      Видите на мапи
+    </NuxtLink>
+    <div class="timeline-card__social-networks">
+      <SocialNetworkCard v-for="social in timeline.socialNetworks" :social-network-data="social"/>
+    </div>
   </section>
 </template>

@@ -19,7 +19,7 @@ const props = defineProps({
         type="button"
         class="guest-name__remove-guest-button"
     >
-      <i class="icon-minus"/>
+      <i class="icon-user-delete"/>
     </button>
   </div>
 </template>
