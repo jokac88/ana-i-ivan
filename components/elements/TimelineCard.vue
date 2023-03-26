@@ -17,6 +17,7 @@ const props = defineProps({
     <i :class="timeline.icon" class="timeline-card__event-icon"/>
     <p v-html="timeline.location" class="timeline-card__location"></p>
     <NuxtLink
+        v-if="timeline.locationUrl"
         :to="timeline.locationUrl"
         target="_blank"
         class="timeline-card__map-button"

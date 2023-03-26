@@ -24,15 +24,13 @@
       "time": "17:30ч",
       "event": "Церемонијално</br>венчање",
       "icon": "icon-rings",
-      "location": "<strong>Ресторан Ђурђевдан</strong>,<br/>Зрењанински пут 106Б,<br/>Београд",
-      "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7"
+      "location": "<strong>Ресторан Ђурђевдан</strong>,<br/>Зрењанински пут 106Б,<br/>Београд"
     },
     {
       "time": "18:00ч",
       "event": "Почетак<br/>журке",
       "icon": "icon-love-fireworks",
       "location": "<strong>Ресторан Ђурђевдан</strong>,<br/>Зрењанински пут 106Б,<br/>Београд",
-      "locationUrl": "https://goo.gl/maps/Y3jwn77DZ9vq9PMQ7",
       "socialNetworks": [
         {
           "name": "Instagram",
