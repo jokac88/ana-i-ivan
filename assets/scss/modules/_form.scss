@@ -1,6 +1,4 @@
 .form {
-  background: url('assets/img/timelines-mobile-background.jpg') 0 0 no-repeat;
-  background-size: cover;
 
   @include target-mq(xxl) {
     display: flex;

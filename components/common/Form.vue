@@ -1,7 +1,6 @@
 <script setup>
 import RadioButton from "~/components/elements/RadioButton";
 import GuestName from "~/components/elements/GuestName";
-import Countdown from "~/components/common/Countdown";
 
 const props = defineProps({
   formData: {
@@ -290,6 +289,5 @@ onMounted(() => {
       </Transition>
     </div>
     <p class="form__info">{{ formData.info }}</p>
-    <Countdown :countdown-data="countdownData"/>
   </section>
 </template>
