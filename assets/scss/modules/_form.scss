@@ -112,13 +112,6 @@
         outline-width: 0;
       }
 
-      &::-webkit-search-decoration,
-      &::-webkit-search-cancel-button,
-      &::-webkit-search-results-button,
-      &::-webkit-search-results-decoration {
-        display: none;
-      }
-
       &:disabled {
         cursor: not-allowed;
       }
@@ -134,6 +127,7 @@
 
       .form__guests-names & {
         flex: 1;
+        padding-right: 46px;
         border-right: none;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -208,6 +202,14 @@
       &.is-hidden {
         display: none;
       }
+    }
+
+    .icon-close {
+      position: absolute;
+      top: 7px;
+      right: 50px;
+      padding: 5px;
+      cursor: pointer;
     }
   }
 

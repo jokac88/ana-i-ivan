@@ -53,12 +53,18 @@ const additionalQuestions = computed(() => {
 function addGuest() {
   if (guestName.value) {
     guestsNames.value = [...guestsNames.value, guestName.value];
-    guestName.value = '';
+    clearGuestName();
   }
 }
 
 function removeGuest(index) {
   guestsNames.value.splice(index, 1);
+}
+
+function clearGuestName() {
+  if (guestName.value) {
+    guestName.value = '';
+  }
 }
 
 function scrollToElement(element) {
@@ -203,6 +209,9 @@ onMounted(() => {
                   class="form__input-field"
                   :disabled="guestNameInputDisabled"
               />
+              <Transition>
+                <i v-if="guestName" class="icon-close" @click="clearGuestName"/>
+              </Transition>
               <button
                   type="button"
                   @click="addGuest"
@@ -228,11 +237,11 @@ onMounted(() => {
                   class="form__guests-number-info"
               >
                 <span v-if="guestsNames.length < guestsNumber - 1">
-                  Додајте још
+                  Додајте
                   {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
                 </span>
                 <span v-else>
-                  Oдузмите још
+                  Oдузмите
                   {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
                 </span>
               </p>
