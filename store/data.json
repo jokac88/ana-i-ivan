@@ -53,6 +53,7 @@
     "name": {
       "question": "Име и презиме",
       "formEntry": "entry.1117261963",
+      "devFormEntry": "entry.1700203536",
       "validationMessage": "Упишите Ваше име и презиме"
     },
     "coming": {
@@ -62,6 +63,7 @@
         "НЕ"
       ],
       "formEntry": "entry.1716217797",
+      "devFormEntry": "entry.2094815888",
       "validationMessage": "Потврдите долазак"
     },
     "guestsNumber": {
@@ -79,19 +81,22 @@
         8,
         9
       ],
-      "formEntry": "entry.1556588741"
+      "formEntry": "entry.1556588741",
+      "devFormEntry": "entry.1931387819"
     },
     "guestsNames": {
       "question": "Имена и презимена гостију који долазе са мном",
       "description": "Додајте име и презиме једно по једног госта.<br/>Децу млађу од две године није потребно додавати.",
       "addGuestButton": "Додајте госта",
       "formEntry": "entry.572556099",
+      "devFormEntry": "entry.388527298",
       "validationMessage": "Број гостију није идентичан као број гостију који сте одабрали из падајућег менија"
     },
     "note": {
       "question": "Напомена",
       "description": "Уколико имате било какву напомену у вези са режимом исхране или Вашим временом доласка, оставите је овде.",
-      "formEntry": "entry.1101559294"
+      "formEntry": "entry.1101559294",
+      "devFormEntry": "entry.730590923"
     },
     "submitButton": "Пошаљите",
     "info": "Молимо Вас да нам потврдите долазак до 01.05.2023. године",

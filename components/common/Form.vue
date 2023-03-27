@@ -8,14 +8,12 @@ const props = defineProps({
     default: () => {
     }
   },
-  countdownData: {
-    type: Object,
-    default: () => {
-    }
-  },
 });
 
-const googleFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
+const prodFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
+const devFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfeK3FJrm37Bp4WNYmUR1pXE0UgH0-wKk23ujeXHD3dUmCvOA/formResponse';
+const googleFormEndpoint = process.env.NODE_ENV === 'development' ? devFormEndpoint : prodFormEndpoint;
+const formEntry = process.env.NODE_ENV === 'development' ? 'devFormEntry' : 'formEntry';
 const name = ref('');
 const coming = ref('');
 const guestsNumber = ref(1);
@@ -52,6 +50,7 @@ const additionalQuestions = computed(() => {
 function addGuest() {
   if (guestName.value) {
     guestsNames.value = [...guestsNames.value, guestName.value];
+
     clearGuestName();
   }
 }
@@ -103,6 +102,7 @@ function onSubmit() {
 
   if (googleIframe) {
     googleIframe.onload = () => {
+      googleIframe.innerHTML = 'true';
       isLoading.value = false;
       isSuccessful.value = true;
     }
@@ -147,7 +147,7 @@ onMounted(() => {
           <div class="form__input">
             <input
                 type="text"
-                :name="formData.name.formEntry"
+                :name="formData.name[formEntry]"
                 v-model="name"
                 :class="{'form__input-field--is-error': isSubmitted && !name }"
                 class="form__input-field"
@@ -165,7 +165,7 @@ onMounted(() => {
                 v-for="value in formData.coming.values"
                 :value="value"
                 :checked="coming"
-                :form-entry="formData.coming.formEntry"
+                :form-entry="formData.coming[formEntry]"
                 :class="{'radio-button--is-error': isSubmitted && !coming }"
                 @radio-button-clicked="event => coming = event"
             />
@@ -182,7 +182,7 @@ onMounted(() => {
             </p>
             <div class="form__select">
               <select
-                  :name="formData.guestsNumber.formEntry"
+                  :name="formData.guestsNumber[formEntry]"
                   v-model="guestsNumber"
                   class="form__input-field"
               >
@@ -249,7 +249,7 @@ onMounted(() => {
             </div>
             <input
                 type="text"
-                :name="formData.guestsNames.formEntry"
+                :name="formData.guestsNames[formEntry]"
                 :value="guestsNames.join(', ')"
                 class="is-hidden"
             />
@@ -262,7 +262,7 @@ onMounted(() => {
               </span>
             </p>
             <textarea
-                :name="formData.note.formEntry"
+                :name="formData.note[formEntry]"
                 v-model="note"
                 rows="4"
                 class="form__input-field form__text-area"
