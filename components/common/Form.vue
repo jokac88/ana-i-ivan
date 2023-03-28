@@ -10,9 +10,9 @@ const props = defineProps({
   },
 });
 
-const prodFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
+const formEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5jTST1cpX-HBBAJA3osntembDZu7f7P2DGNEAg/formResponse';
 const devFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfeK3FJrm37Bp4WNYmUR1pXE0UgH0-wKk23ujeXHD3dUmCvOA/formResponse';
-const googleFormEndpoint = process.env.NODE_ENV === 'development' ? devFormEndpoint : prodFormEndpoint;
+const googleFormEndpoint = process.env.NODE_ENV === 'development' ? devFormEndpoint : formEndpoint;
 const formEntry = process.env.NODE_ENV === 'development' ? 'devFormEntry' : 'formEntry';
 const name = ref('');
 const coming = ref('');
@@ -33,6 +33,7 @@ const guestName = ref('');
 const note = ref('');
 const isSubmitted = ref(false);
 const isLoading = ref(false);
+const submitError = ref(false);
 const isSuccessful = ref(false);
 
 const guestNameInputDisabled = computed(() => {
@@ -69,7 +70,7 @@ function scrollToElement(element) {
   element.scrollIntoView({behavior: 'smooth'});
 }
 
-function onSubmit() {
+function formValidation() {
   if (!isSubmitted.value) {
     isSubmitted.value = true;
   }
@@ -95,49 +96,58 @@ function onSubmit() {
     return false;
   }
 
-  document.getElementById('google-form').target = 'google-form-response-iframe';
-  const googleIframe = document.getElementById('google-form-response-iframe');
-
-  isLoading.value = true;
-
-  if (googleIframe) {
-    googleIframe.onload = () => {
-      googleIframe.innerHTML = 'true';
-      isLoading.value = false;
-      isSuccessful.value = true;
-    }
-  }
+  return true;
 }
+
+const onSubmit = async () => {
+  if (formValidation()) {
+    const entryFields = document.querySelectorAll('[name^="entry"]');
+    const formData = new FormData();
+
+    entryFields.forEach(field => formData.append(field.name, field.value));
+
+    isLoading.value = true;
+
+    await useFetch(googleFormEndpoint, {
+      method: "POST",
+      body: formData,
+
+      onResponse({response}) {
+        if (response.ok) {
+          isSuccessful.value = true;
+
+          if (submitError.value) {
+            submitError.value = false;
+          }
+        }
+      },
+      onResponseError({response}) {
+
+        if (!response.ok) {
+          submitError.value = true;
+
+          const element = document.querySelector('.form__submit');
+          scrollToElement(element);
+        }
+      }
+    });
+    isLoading.value = false;
+  }
+};
 
 function resetForm() {
   name.value = coming.value = note.value = '';
   guestsNumber.value = 1;
   guestsNames.value = [];
-  isSubmitted.value = isLoading.value = isSuccessful.value = false;
+  isSubmitted.value = isLoading.value = submitError.value = isSuccessful.value = false;
 }
 
-onMounted(() => {
-  const googleForm = document.getElementById('google-form');
-
-  googleForm.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      return false;
-    }
-  })
-});
 </script>
 
 <template>
   <section class="form">
     <div class="form__wrapper">
-      <form
-          id="google-form"
-          target="google-form-response-iframe"
-          :action="googleFormEndpoint"
-          method="POST"
-          :onsubmit="onSubmit"
-      >
+      <form @submit.prevent>
         <p class="form__heading">{{ formData.heading }}</p>
         <div class="form__element form__name">
           <p class="form__text">
@@ -212,7 +222,6 @@ onMounted(() => {
                 <i v-if="guestName" class="icon-close" @click="clearGuestName"/>
               </Transition>
               <button
-                  type="button"
                   @click="addGuest"
                   class="form__add-guest-button"
                   :disabled="guestNameButtonDisabled"
@@ -269,19 +278,28 @@ onMounted(() => {
             />
           </div>
         </div>
-        <button class="form__submit-button" :disabled="isLoading">
+        <div class="form__submit">
+          <button
+              @click="onSubmit"
+              type="button"
+              class="form__submit-button"
+              :disabled="isLoading"
+          >
           <span>
             {{ formData.submitButton }}
             <img v-if="isLoading" src="~/assets/img/loader.gif" alt="~/assets/img/loader.gif"/>
           </span>
-        </button>
-        <iframe id="google-form-response-iframe" name="google-form-response-iframe"/>
+          </button>
+          <Transition>
+            <p v-if="submitError" class="form__submit-error">{{ formData.formSubmitError }}</p>
+          </Transition>
+        </div>
       </form>
       <Transition>
         <div v-if="isSuccessful" class="form__successful-message">
           <div class="form__successful-message-wrapper">
             <p v-html="formData.successfulMessage"></p>
-            <button @click="resetForm" type="button" class="form__close-form-button">
+            <button @click="resetForm" class="form__close-form-button">
               <i class="icon-close"/>
             </button>
           </div>

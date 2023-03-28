@@ -20,7 +20,7 @@ const props = defineProps({
     {{ value }}
     <input
         type="radio"
-        :name="formEntry"
+        :name="value === checked && formEntry"
         @click="$emit('radio-button-clicked', value)"
         :value="value"
         :checked="value === checked"

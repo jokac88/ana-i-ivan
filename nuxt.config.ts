@@ -44,8 +44,5 @@ export default defineNuxtConfig({
             ]
         },
     },
-    pwa: {
-        /* your pwa options */
-    },
     css: ['@/assets/scss/main.scss']
 })
