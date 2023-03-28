@@ -1,9 +1,9 @@
-.timelines {
-  background: url('assets/img/timelines-mobile-background.jpg') 0 0 no-repeat;
+.timeline {
+  background: url('../../img/timeline-mobile.jpg') 0 0 no-repeat;
   background-size: cover;
 
   @include target-mq(sm) {
-    background: url('assets/img/timelines-background.jpg') 0 0 no-repeat;
+    background: url('assets/img/timeline.jpg') 0 0 no-repeat;
     background-size: cover;
   }
 

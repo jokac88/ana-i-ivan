@@ -6,11 +6,11 @@
   padding-top: 100px;
   font-family: $font-family-secondary;
   text-align: center;
-  background: url('assets/img/header-mobile-background.png');
+  background: url('assets/img/header-mobile.png');
   background-size: 667px auto;
 
   @include target-mq(sm) {
-    background: url('assets/img/header-background.png') top center;
+    background: url('assets/img/header.png') top center;
     background-size: cover;
   }
 

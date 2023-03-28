@@ -2,7 +2,7 @@
 import TimelineCard from "~/components/elements/TimelineCard";
 
 const props = defineProps({
-  timelinesData: {
+  timelineData: {
     type: Array,
     default: () => [],
   },
@@ -10,9 +10,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="timelines">
-    <div class="timelines__wrapper">
-      <TimelineCard v-for="timeline in timelinesData" :timeline="timeline"/>
+  <section class="timeline">
+    <div class="timeline__wrapper">
+      <TimelineCard v-for="timeline in timelineData" :timeline="timeline"/>
     </div>
   </section>
 </template>
