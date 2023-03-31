@@ -300,26 +300,27 @@ onMounted(() => {
                                 :class="{'form__guests-names-list--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
                                 class="form__guests-names-list"
                         >
+                            <p
+                                    v-if="guestsNames.length !== guestsNumber - 1"
+                                    :class="{'form__guests-number-info--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
+                                    class="form__guests-number-info"
+                            >
+                                <span v-if="guestsNames.length < guestsNumber - 1">
+                                    Додајте
+                                    {{ guestsNames.length ? 'још' : '' }}
+                                    {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
+                                </span>
+                                <span v-else>
+                                    Oдузмите joш
+                                    {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
+                                </span>
+                            </p>
                             <GuestName
                                     v-for="(guest, index) in guestsNamesReversed"
                                     :guest-name="guest"
                                     :index="guestsNames.length - index"
                                     @removeGuest="removeGuest"
                             />
-                            <p
-                                    v-if="guestsNames.length !== guestsNumber - 1"
-                                    :class="{'form__guests-number-info--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
-                                    class="form__guests-number-info"
-                            >
-                            <span v-if="guestsNames.length < guestsNumber - 1">
-                                Додајте
-                                {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
-                            </span>
-                                <span v-else>
-                                Oдузмите
-                                {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
-                            </span>
-                            </p>
                             <p v-if="isSubmitted && guestsNames.length !== guestsNumber - 1"
                                class="form__validation-message">
                                 {{ formData.guestsNames.validationMessage }}
