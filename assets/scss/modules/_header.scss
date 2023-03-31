@@ -10,7 +10,8 @@
   background-size: 667px auto;
 
   @include target-mq(sm) {
-    background: url('assets/img/header.png') top center;
+    background-image: url('assets/img/header.png');
+    background-position: top center;
     background-size: cover;
   }
 
