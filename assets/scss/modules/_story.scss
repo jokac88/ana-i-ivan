@@ -1,6 +1,4 @@
 .story {
-  background: url('assets/img/story.jpg') center no-repeat;
-  background-size: cover;
 
   @include target-mq(xxl) {
     display: flex;

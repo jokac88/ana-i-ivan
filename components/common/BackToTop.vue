@@ -21,11 +21,11 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
 </script>
 
 <template>
-  <div
-      class="back-to-top"
-      :class="{'back-to-top--is-visible': isVisible}"
-      @click="backToTop"
-  >
-    <i class="icon-back-to-top"/>
-  </div>
+    <div
+            class="back-to-top"
+            :class="{'back-to-top--is-visible': isVisible}"
+            @click="backToTop"
+    >
+        <i class="icon-back-to-top"/>
+    </div>
 </template>

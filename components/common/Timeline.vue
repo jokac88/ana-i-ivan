@@ -10,9 +10,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="timeline">
-    <div class="timeline__wrapper">
-      <TimelineCard v-for="timeline in timelineData" :timeline="timeline"/>
-    </div>
-  </section>
+    <section class="timeline">
+        <div class="timeline__wrapper">
+            <TimelineCard v-for="timeline in timelineData" :timeline="timeline"/>
+        </div>
+    </section>
 </template>

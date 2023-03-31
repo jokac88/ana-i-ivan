@@ -1,10 +1,10 @@
 .timeline {
-  background: url('assets/img/timeline-mobile.jpg') 0 0 no-repeat;
+  background-position: 0 0;
+  background-repeat: no-repeat;
   background-size: cover;
 
   @include target-mq(sm) {
-    background: url('assets/img/timeline.jpg') 0 0 no-repeat;
-    background-size: cover;
+    background-image: url('assets/img/timeline.jpg');
   }
 
   @include target-mq(xxl) {

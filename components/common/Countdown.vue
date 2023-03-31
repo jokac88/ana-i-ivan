@@ -36,25 +36,25 @@ onBeforeUnmount(() => clearInterval(setFunctionInterval))
 </script>
 
 <template>
-  <section class="countdown">
-    <p class="countdown__info">{{ countdownData.text }}</p>
-    <div class="countdown__wrapper">
-      <div class="countdown__text">
-        {{ days < 10 ? `0${days}` : days }}
-        <span>Дани</span>
-      </div>
-      <div class="countdown__text">
-        {{ hours < 10 ? `0${hours}` : hours }}
-        <span>Сати</span>
-      </div>
-      <div class="countdown__text">
-        {{ minutes < 10 ? `0${minutes}` : minutes  }}
-        <span>Минути</span>
-      </div>
-      <div class="countdown__text">
-        {{ seconds < 10 ? `0${seconds}` : seconds }}
-        <span>Секунде</span>
-      </div>
-    </div>
-  </section>
+    <section class="countdown">
+        <p class="countdown__info">{{ countdownData.text }}</p>
+        <div class="countdown__wrapper">
+            <div class="countdown__text">
+                {{ days < 10 ? `0${days}` : days }}
+                <span>Дани</span>
+            </div>
+            <div class="countdown__text">
+                {{ hours < 10 ? `0${hours}` : hours }}
+                <span>Сати</span>
+            </div>
+            <div class="countdown__text">
+                {{ minutes < 10 ? `0${minutes}` : minutes }}
+                <span>Минути</span>
+            </div>
+            <div class="countdown__text">
+                {{ seconds < 10 ? `0${seconds}` : seconds }}
+                <span>Секунде</span>
+            </div>
+        </div>
+    </section>
 </template>

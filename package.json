@@ -2,10 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "nuxi dev --port=8000",
-    "build": "nuxi build",
-    "generate": "nuxi generate",
+    "build_preview": "nuxi build & nuxi preview",
+    "generate_preview": "nuxi generate & nuxi preview",
     "deploy": "gh-pages --dotfiles -d dist",
-    "preview": "nuxi preview",
     "postinstall": "nuxi prepare"
   },
   "devDependencies": {
