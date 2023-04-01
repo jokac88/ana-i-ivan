@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  guestName: {
+  guestFullName: {
     type: String,
     default: ''
   },
@@ -13,7 +13,7 @@ const props = defineProps({
 <template>
     <div class="guest-name">
         <p class="guest-name__number">{{ index }}.</p>
-        <p class="guest-name__text">{{ guestName }}</p>
+        <p class="guest-name__text">{{ guestFullName }}</p>
         <button
                 @click="$emit('remove-guest', index)"
                 type="button"

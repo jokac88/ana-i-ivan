@@ -50,7 +50,7 @@
   },
   "form": {
     "heading": "Потврда доласка",
-    "name": {
+    "fullName": {
       "question": "Име и презиме",
       "formEntry": "entry.1117261963",
       "devFormEntry": "entry.1700203536",
@@ -84,13 +84,13 @@
       "formEntry": "entry.1556588741",
       "devFormEntry": "entry.1931387819"
     },
-    "guestsNames": {
+    "guestsFullNames": {
       "question": "Имена и презимена гостију који долазе са мном",
       "description": "Додајте име и презиме једно по једног госта.<br/>Децу млађу од две године није потребно додавати.",
       "addGuestButton": "Додајте госта",
       "formEntry": "entry.572556099",
       "devFormEntry": "entry.388527298",
-      "validationMessage": "Број гостију није идентичан као број гостију који сте одабрали из падајућег менија"
+      "validationMessage": "Број гостију није идентичан броју који сте изабрали у падајућем менију"
     },
     "note": {
       "question": "Напомена",

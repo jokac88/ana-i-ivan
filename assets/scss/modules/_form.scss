@@ -39,9 +39,10 @@
     }
   }
 
-  form {
+  #google-form {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   &__element {
@@ -102,11 +103,11 @@
       }
 
       &:hover:not(:disabled) {
-        box-shadow: 0 0 5pt .5pt $color-light-gray;
+        box-shadow: 0 0 5px .5px $color-light-gray;
       }
 
       &:focus:not(:disabled) {
-        box-shadow: 0 0 5pt 2pt $color-light-gray;
+        box-shadow: 0 0 5px 2px $color-light-gray;
         outline-width: 0;
       }
 
@@ -121,6 +122,10 @@
       &--is-error {
         border-color: $color-invalid;
         box-shadow: unset;
+      }
+
+      &--is-hidden {
+        display: none;
       }
 
       .form__guests-names & {
@@ -193,19 +198,32 @@
     word-break: keep-all;
   }
 
-  &__guests-names {
+  &__guestFirstName,
+  &__guestLastName {
+    flex: 1;
+    position: relative;
+    z-index: 0;
+    transition: all .3s;
+
+    &:hover {
+      z-index: 1;
+    }
+  }
+
+  &__guestLastName {
 
     input {
-
-      &.is-hidden {
-        display: none;
-      }
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
+  }
+
+  &__guests-names {
 
     .icon-close {
       position: absolute;
       top: 7px;
-      right: 50px;
+      right: 10px;
       padding: 5px;
       color: $color-secondary;
       cursor: pointer;
@@ -299,15 +317,11 @@
     height: 40px;
     border: none;
     border-radius: 0 5px 5px 0;
-    transition: opacity .3s;
+    transition: all .3s;
 
     i {
       font-size: 20px;
     }
-  }
-
-  #google-form-response-iframe {
-    display: none;
   }
 
   &__submit {
@@ -320,6 +334,19 @@
     }
   }
 
+  #google-form-response-iframe {
+    display: none;
+  }
+
+  &__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba($color-black, .2);
+    cursor: not-allowed;
+  }
+
   &__successful-message {
     position: fixed;
     top: 0;
@@ -330,7 +357,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba($color-black, .8);
+    background-color: rgba($color-black, .5);
     text-align: center;
 
     &-wrapper {

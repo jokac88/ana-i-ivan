@@ -1,6 +1,6 @@
 <script setup>
 import RadioButton from "~/components/elements/RadioButton";
-import GuestName from "~/components/elements/GuestName";
+import GuestFullName from "~/components/elements/GuestFullName";
 
 const props = defineProps({
   formData: {
@@ -14,10 +14,10 @@ const formEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLScflw1DmNIo5j
 const devFormEndpoint = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfeK3FJrm37Bp4WNYmUR1pXE0UgH0-wKk23ujeXHD3dUmCvOA/formResponse';
 const googleFormEndpoint = process.env.NODE_ENV === 'development' ? devFormEndpoint : formEndpoint;
 const formEntry = process.env.NODE_ENV === 'development' ? 'devFormEntry' : 'formEntry';
-const name = ref('');
+const fullName = ref('');
 const coming = ref('');
 const guestsNumber = ref(1);
-const guestsNames = ref([]);
+const guestsFullNames = ref([]);
 const guestsObject = {
   1: 'једног госта',
   2: 'два госта',
@@ -29,48 +29,55 @@ const guestsObject = {
   8: 'осам гостију',
   9: 'девет гостију',
 };
-const guestName = ref('');
+const guestFirstName = ref('');
+const guestLastName = ref('');
 const note = ref('');
 const isSubmitted = ref(false);
 const isLoading = ref(false);
 const submitError = ref(false);
 const isSuccessful = ref(false);
 
-const guestNameInputDisabled = computed(() => {
-  return guestsNumber.value - 1 === guestsNames.value.length || guestsNumber.value - 1 < guestsNames.value.length;
+const guestFullName = computed(() => {
+  return `${guestFirstName.value} ${guestLastName.value}`;
 });
 
-const guestNameButtonDisabled = computed(() => {
-  return !guestName.value || guestsNumber.value - 1 === guestsNames.value.length || guestsNumber.value - 1 < guestsNames.value.length;
+const guestFullNameInputDisabled = computed(() => {
+  return guestsNumber.value - 1 === guestsFullNames.value.length || guestsNumber.value - 1 < guestsFullNames.value.length;
+});
+
+const guestFullNameButtonDisabled = computed(() => {
+  return !guestFirstName.value || !guestLastName.value || guestsNumber.value - 1 === guestsFullNames.value.length || guestsNumber.value - 1 < guestsFullNames.value.length;
 });
 
 const additionalQuestions = computed(() => {
   return coming.value === 'ДА';
 });
 
-const guestsNamesReversed = computed(() => {
-  return [...guestsNames.value].reverse();
+const guestsFullNamesReversed = computed(() => {
+  return [...guestsFullNames.value].reverse();
 });
 
 function addGuest() {
-  if (guestName.value) {
-    guestsNames.value = [...guestsNames.value, guestName.value];
+  if (guestFirstName.value && guestLastName.value) {
+    guestsFullNames.value = [...guestsFullNames.value, guestFullName.value];
 
-    clearGuestName();
+    guestFirstName.value = guestLastName.value = guestFullName.value = '';
+
+    const inputField = document.querySelector(`.form__guestFirstName input.form__input-field`);
+
+    inputField.focus();
   }
 }
 
 function removeGuest(index) {
-  guestsNames.value.splice(index - 1, 1);
+  guestsFullNames.value.splice(index - 1, 1);
 }
 
-function clearGuestName() {
-  if (guestName.value) {
-    const inputField = document.querySelector('.form__guests-names input.form__input-field');
+function clearGuestName(props) {
+  const inputField = document.querySelector(`.form__${props} input.form__input-field`);
 
-    inputField.focus();
-    guestName.value = '';
-  }
+  inputField.focus();
+  this[props] = '';
 }
 
 function scrollToElement(element) {
@@ -83,7 +90,7 @@ function scrollToElement(element) {
 //   }
 //
 //   if (!name.value) {
-//     const element = document.querySelector('.form__name');
+//     const element = document.querySelector('.form__fullName');
 //     scrollToElement(element);
 //
 //     return false;
@@ -96,7 +103,7 @@ function scrollToElement(element) {
 //     return false;
 //   }
 //
-//   if (coming.value === 'ДА' && guestsNumber.value - 1 !== guestsNames.value.length) {
+//   if (coming.value === 'ДА' && guestsNumber.value - 1 !== guestsFullNames.value.length) {
 //     const element = document.querySelector('.form__guests-names');
 //     scrollToElement(element);
 //
@@ -148,8 +155,8 @@ function onSubmit() {
     isSubmitted.value = true;
   }
 
-  if (!name.value) {
-    const element = document.querySelector('.form__name');
+  if (!fullName.value) {
+    const element = document.querySelector('.form__fullName');
     scrollToElement(element);
 
     return false;
@@ -162,7 +169,7 @@ function onSubmit() {
     return false;
   }
 
-  if (coming.value === 'ДА' && guestsNumber.value - 1 !== guestsNames.value.length) {
+  if (coming.value === 'ДА' && guestsNumber.value - 1 !== guestsFullNames.value.length) {
     const element = document.querySelector('.form__guests-names');
     scrollToElement(element);
 
@@ -183,9 +190,9 @@ function onSubmit() {
 }
 
 function resetForm() {
-  name.value = coming.value = note.value = '';
+  fullName.value = coming.value = note.value = '';
   guestsNumber.value = 1;
-  guestsNames.value = [];
+  guestsFullNames.value = [];
   isSubmitted.value = isLoading.value = submitError.value = isSuccessful.value = false;
 }
 
@@ -205,6 +212,7 @@ onMounted(() => {
 <template>
     <section class="form">
         <div class="form__wrapper">
+            <p class="form__heading">{{ formData.heading }}</p>
             <!--            <form @submit.prevent>-->
             <form
                     id="google-form"
@@ -213,22 +221,21 @@ onMounted(() => {
                     method="POST"
                     :onsubmit="onSubmit"
             >
-                <p class="form__heading">{{ formData.heading }}</p>
-                <div class="form__element form__name">
+                <div class="form__element form__fullName">
                     <p class="form__text">
-                        {{ formData.name.question }}
+                        {{ formData.fullName.question }}
                         <span class="form__required">*</span>
                     </p>
                     <div class="form__input">
                         <input
                                 type="text"
-                                :name="formData.name[formEntry]"
-                                v-model="name"
-                                :class="{'form__input-field--is-error': isSubmitted && !name }"
+                                :name="formData.fullName[formEntry]"
+                                v-model="fullName"
+                                :class="{'form__input-field--is-error': isSubmitted && !fullName }"
                                 class="form__input-field"
                         />
-                        <p v-if="isSubmitted && !name" class="form__validation-message">
-                            {{ formData.name.validationMessage }}</p>
+                        <p v-if="isSubmitted && !fullName" class="form__validation-message">
+                            {{ formData.fullName.validationMessage }}</p>
                     </div>
                 </div>
                 <div class="form__element form__coming">
@@ -272,65 +279,89 @@ onMounted(() => {
                     </div>
                     <div v-if="guestsNumber > 1" class="form__element form__guests-names">
                         <p class="form__text">
-                            {{ formData.guestsNames.question }}
+                            {{ formData.guestsFullNames.question }}
                             <span class="form__required">*</span>
-                            <span v-html="formData.guestsNames.description" class="form__description"/>
+                            <span v-html="formData.guestsFullNames.description" class="form__description"/>
                         </p>
                         <div class="form__flex-container">
-                            <input
-                                    type="text"
-                                    @keyup.enter="addGuest"
-                                    v-model="guestName"
-                                    class="form__input-field"
-                                    :disabled="guestNameInputDisabled"
-                            />
-                            <Transition>
-                                <i v-if="guestName" class="icon-close" @click="clearGuestName"/>
-                            </Transition>
+                            <div class="form__guestFirstName">
+                                <input
+                                        type="text"
+                                        v-model="guestFirstName"
+                                        @keyup.enter="addGuest"
+                                        class="form__input-field"
+                                        placeholder="Име"
+                                        :disabled="guestFullNameInputDisabled"
+                                />
+                                <Transition>
+                                    <i
+                                            v-if="guestFirstName"
+                                            class="icon-close"
+                                            @click="clearGuestName('guestFirstName')"/>
+                                </Transition>
+                            </div>
+                            <div class="form__guestLastName">
+                                <input
+                                        type="text"
+                                        v-model="guestLastName"
+                                        @keyup.enter="addGuest"
+                                        class="form__input-field"
+                                        placeholder="Презиме"
+                                        :disabled="guestFullNameInputDisabled"
+                                />
+                                <Transition>
+                                    <i
+                                            v-if="guestLastName"
+                                            class="icon-close"
+                                            @click="clearGuestName('guestLastName')"/>
+                                </Transition>
+                            </div>
                             <button
                                     type="button"
                                     @click="addGuest"
+                                    @keyup.enter="addGuest"
                                     class="form__add-guest-button"
-                                    :disabled="guestNameButtonDisabled"
+                                    :disabled="guestFullNameButtonDisabled"
                             >
                                 <i class="icon-user-add"/>
                             </button>
                         </div>
                         <div
-                                :class="{'form__guests-names-list--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
+                                :class="{'form__guests-names-list--is-error': isSubmitted && guestsFullNames.length !== guestsNumber - 1 }"
                                 class="form__guests-names-list"
                         >
                             <p
-                                    v-if="guestsNames.length !== guestsNumber - 1"
-                                    :class="{'form__guests-number-info--is-error': isSubmitted && guestsNames.length !== guestsNumber - 1 }"
+                                    v-if="guestsFullNames.length !== guestsNumber - 1"
+                                    :class="{'form__guests-number-info--is-error': isSubmitted && guestsFullNames.length !== guestsNumber - 1 }"
                                     class="form__guests-number-info"
                             >
-                                <span v-if="guestsNames.length < guestsNumber - 1">
+                                <span v-if="guestsFullNames.length < guestsNumber - 1">
                                     Додајте
-                                    {{ guestsNames.length ? 'још' : '' }}
-                                    {{ guestsObject[guestsNumber - 1 - guestsNames.length] }}
+                                    {{ guestsFullNames.length ? 'још' : '' }}
+                                    {{ guestsObject[guestsNumber - 1 - guestsFullNames.length] }}
                                 </span>
                                 <span v-else>
                                     Oдузмите joш
-                                    {{ guestsObject[guestsNames.length + 1 - guestsNumber] }}
+                                    {{ guestsObject[guestsFullNames.length + 1 - guestsNumber] }}
                                 </span>
                             </p>
-                            <GuestName
-                                    v-for="(guest, index) in guestsNamesReversed"
-                                    :guest-name="guest"
-                                    :index="guestsNames.length - index"
+                            <GuestFullName
+                                    v-for="(guestFullName, index) in guestsFullNamesReversed"
+                                    :guest-fullName="guestFullName"
+                                    :index="guestsFullNames.length - index"
                                     @removeGuest="removeGuest"
                             />
-                            <p v-if="isSubmitted && guestsNames.length !== guestsNumber - 1"
+                            <p v-if="isSubmitted && guestsFullNames.length !== guestsNumber - 1"
                                class="form__validation-message">
-                                {{ formData.guestsNames.validationMessage }}
+                                {{ formData.guestsFullNames.validationMessage }}
                             </p>
                         </div>
                         <input
                                 type="text"
-                                :name="formData.guestsNames[formEntry]"
-                                :value="guestsNames.join(', ')"
-                                class="is-hidden"
+                                :name="formData.guestsFullNames[formEntry]"
+                                :value="guestsFullNames.join(', ')"
+                                class="form__input-field--is-hidden"
+                                readonly
                         />
                     </div>
                     <div class="form__element">
@@ -350,17 +381,24 @@ onMounted(() => {
                     </div>
                 </div>
                 <div class="form__submit">
-                    <button class="form__submit-button" :disabled="isLoading">
+                    <button class="form__submit-button">
                         <span>
                             {{ formData.submitButton }}
-                            <img v-if="isLoading" src="@/assets/img/loader.gif" alt="@/assets/img/loader.gif"/>
+                            <img
+                                    v-if="isLoading"
+                                    src="@/assets/img/loader.svg"
+                                    alt="@/assets/img/loader.svg"
+                            />
                         </span>
                     </button>
-                    <iframe id="google-form-response-iframe" name="google-form-response-iframe"/>
                     <!--                    <Transition>-->
                     <!--                        <p v-if="submitError" class="form__submit-error">{{ formData.formSubmitError }}</p>-->
                     <!--                    </Transition>-->
                 </div>
+                <iframe id="google-form-response-iframe" name="google-form-response-iframe"/>
+                <Transition>
+                    <div v-if="isLoading" class="form__overlay"/>
+                </Transition>
             </form>
             <Transition>
                 <div v-if="isSuccessful" class="form__successful-message">
