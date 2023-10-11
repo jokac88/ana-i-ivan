@@ -1,17 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "dev": "nuxi dev --port=8000",
-    "build_preview": "nuxi build & nuxi preview",
-    "generate_preview": "nuxi generate & nuxi preview",
+    "build": "nuxt build",
     "deploy": "gh-pages --dotfiles -d dist",
-    "postinstall": "nuxi prepare"
+    "dev": "nuxt dev -p 8000 --host",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
-    "lodash": "^4.17.21",
-    "nuxt": "^3.2.3",
-    "sass": "^1.59.0",
-    "sass-loader": "^10.4.1"
+    "@nuxt/devtools": "latest",
+    "gh-pages": "^6.0.0",
+    "nuxt": "^3.7.4",
+    "nuxt-lodash": "^2.5.0",
+    "sass": "^1.69.0"
   }
 }

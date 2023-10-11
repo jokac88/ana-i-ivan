@@ -4,11 +4,8 @@ export default defineNuxtConfig({
     ssr: false,
     app: {
         head: {
-            charset: 'utf-8',
-            viewport: 'width=device-width, initial-scale=1',
             title: 'Ана и Иван',
             meta: [
-                // <meta name="description" content="My amazing site">
                 {
                     name: 'description',
                     content: 'Ана и Иван'
@@ -40,10 +37,14 @@ export default defineNuxtConfig({
                 }
             ],
             noscript: [
-                // <noscript>JavaScript is required</noscript>
-                {textContent: 'JavaScript is required'}
+                {
+                    innerHTML: 'JavaScript is required'
+                }
             ]
         },
     },
-    css: ['@/assets/scss/main.scss']
-})
+    modules: [
+        'nuxt-lodash'
+    ],
+    css: ['~/assets/scss/main.scss']
+});

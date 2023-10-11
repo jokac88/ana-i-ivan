@@ -1,6 +1,4 @@
 <script setup>
-import throttle from 'lodash/throttle';
-
 let isVisible = ref(false);
 
 function backToTop() {
@@ -10,7 +8,7 @@ function backToTop() {
   });
 }
 
-const onScroll = throttle(() => {
+const onScroll = useThrottle(() => {
   const currentScrollYPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
   isVisible.value = currentScrollYPosition >= 600;

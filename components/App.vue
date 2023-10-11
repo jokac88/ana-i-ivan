@@ -15,12 +15,14 @@ const {
 </script>
 
 <template>
+  <div class="flex-container">
     <Header :header-data="headerData"/>
     <Timeline :timeline-data="timelineData"/>
     <Footer
-            :story-data="storyData"
-            :form-data="formData"
-            :countdown-data="countdownData"
+        :story-data="storyData"
+        :form-data="formData"
+        :countdown-data="countdownData"
     />
     <BackToTop/>
+  </div>
 </template>
