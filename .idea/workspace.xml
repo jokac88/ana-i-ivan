@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52e7f642-95b5-4da8-853d-f7d7b3566ede" name="Changes" comment="Add action deployment, update packages and file colors">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+    <list default="true" id="52e7f642-95b5-4da8-853d-f7d7b3566ede" name="Changes" comment="Update deployment">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +164,7 @@
       <workItem from="1710845308936" duration="1204000" />
       <workItem from="1710846521619" duration="866000" />
       <workItem from="1710847396184" duration="41000" />
-      <workItem from="1710847443458" duration="33000" />
+      <workItem from="1710847443458" duration="503000" />
     </task>
     <task id="LOCAL-00001" summary="Add action deployment, update packages and file colors">
       <option name="closed" value="true" />
@@ -178,7 +174,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710846229965</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add deploy action, update npm packages, .gitignore file and file colors">
+      <option name="closed" value="true" />
+      <created>1710847631331</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710847631331</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update deployment">
+      <option name="closed" value="true" />
+      <created>1710847943540</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710847943540</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +221,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add action deployment, update packages and file colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add action deployment, update packages and file colors" />
+    <MESSAGE value="Add deploy action, update npm packages, .gitignore file and file colors" />
+    <MESSAGE value="Update deployment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update deployment" />
   </component>
 </project>
