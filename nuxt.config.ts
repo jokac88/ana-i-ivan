@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     },
     ssr: false,
     app: {
+        baseURL: '/ana-i-ivan/',
+        buildAssetsDir: 'assets',
         head: {
             title: 'Ана и Иван',
             meta: [
