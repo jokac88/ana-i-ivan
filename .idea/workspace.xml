@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52e7f642-95b5-4da8-853d-f7d7b3566ede" name="Changes" comment="Update deployment" />
+    <list default="true" id="52e7f642-95b5-4da8-853d-f7d7b3566ede" name="Changes" comment="Update .idea" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +72,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/",
+    "last_opened_file_path": "D:/builtt",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -163,7 +163,7 @@
       <workItem from="1710845308936" duration="1204000" />
       <workItem from="1710846521619" duration="866000" />
       <workItem from="1710847396184" duration="41000" />
-      <workItem from="1710847443458" duration="6195000" />
+      <workItem from="1710847443458" duration="7208000" />
     </task>
     <task id="LOCAL-00001" summary="Add action deployment, update packages and file colors">
       <option name="closed" value="true" />
@@ -245,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710853784226</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update .idea">
+      <option name="closed" value="true" />
+      <created>1710854373724</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710854373724</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +286,7 @@
     <MESSAGE value="Add action deployment, update packages and file colors" />
     <MESSAGE value="Add deploy action, update npm packages, .gitignore file and file colors" />
     <MESSAGE value="Update deployment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update deployment" />
+    <MESSAGE value="Update .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update .idea" />
   </component>
 </project>
