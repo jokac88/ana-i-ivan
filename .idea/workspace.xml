@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52e7f642-95b5-4da8-853d-f7d7b3566ede" name="Changes" comment="">
+    <list default="true" id="52e7f642-95b5-4da8-853d-f7d7b3566ede" name="Changes" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/scss/modules/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/scss/modules/_header.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +117,7 @@
       <recent name="$PROJECT_DIR$/app/assets/scss/elements" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.deploy">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -220,6 +221,7 @@
       <workItem from="1770995663556" duration="16978000" />
       <workItem from="1771028702850" duration="597000" />
       <workItem from="1771029354190" duration="892000" />
+      <workItem from="1771074908858" duration="208000" />
     </task>
     <task id="LOCAL-00001" summary="Add action deployment, update packages and file colors">
       <option name="closed" value="true" />
@@ -325,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771031065297</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix">
+      <option name="closed" value="true" />
+      <created>1771035443950</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1771035443950</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,7 +370,8 @@
     <MESSAGE value="Update deployment" />
     <MESSAGE value="Update .idea" />
     <MESSAGE value="Update nuxt to the lts version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update nuxt to the lts version" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

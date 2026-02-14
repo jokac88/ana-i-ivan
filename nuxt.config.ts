@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     baseURL: process.env.NODE_ENV === 'production' ? '/ana-i-ivan/' : '/',
+    buildAssetsDir: 'assets',
     head: {
       title: 'Ана и Иван',
       meta: [
